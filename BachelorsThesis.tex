@@ -23,6 +23,8 @@
 % \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
 % \makeglossaries
 
+
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 % EDIT THIS
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
@@ -35,11 +37,14 @@
 \authorWithDegrees{Martin Andr{\' y}sek} %author's name with academic degrees
 \supervisor{Ing. Ji{\v r}{\' i} Bu{\v c}ek}
 \acknowledgements{THANKS (remove entirely in case you do not with to thank anyone)}
-\abstractEN{This thesis is focused on replication of timing attack on RSA cipher, which is done by measuring time of square and multiply algorithm. Implementation should be used for education purposes, mainly in security courses.}
-\abstractCS{V n{\v e}kolika v{\v e}t{\' a}ch shr{\v n}te obsah a p{\v r}{\' i}nos t{\' e}to pr{\' a}ce v {\v c}esk{\' e}m jazyce.}
+\abstractEN{This thesis is focused on replication of timing attack on RSA cipher, which is done by measuring time of square and multiply algorithm. Implementation
+  should be used for education purposes, mainly in security courses.}
+\abstractCS{Tato prace se zabyva utokem na sifru RSA casovym postrannim kanalem. Pomoci mereni casu podepisovani predgenerovanych zprav, je utocnik schopen postupne uhadnout
+  kazdy bit soukromeho klice. Vysledkem prace je demonstrativni aplikace, ktera bude pouzita ve vyuce predmetu,
+  zabyvajicimi se pocitacovou bezpecnosti. }
 \placeForDeclarationOfAuthenticity{Prague}
 \keywordsCS{Replace with comma-separated list of keywords in Czech.}
-\keywordsEN{RSA, cryptoanalysis, timming attack}
+\keywordsEN{RSA, cryptoanalysis, timming attack, side channel, square and multiply}
 \declarationOfAuthenticityOption{1} %select as appropriate, according to the desired license (integer 1-6)
 % \website{http://site.example/thesis} %optional thesis URL
 
@@ -57,7 +62,19 @@
 \setsecnumdepth{all}
 \chapter{State-of-the-art}
 
-\chapter{Analysis and design}
+\chapter{RSA}
+{RSA is public-key cryptosystem which was invented by Ron Rivest, Adi Shamir and Leonard Adleman. The cryptosystem was published in the 1977.}
+
+\section{Principle}
+{}
+
+\section{Optimalization}
+
+\chapter{Attacks}
+
+\section{Attack on multiply}
+
+\section{Attack on square}
 
 \chapter{Realisation}
 
