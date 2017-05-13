@@ -18,6 +18,10 @@
 
 \usepackage{dirtree} %directory tree visualisation
 
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
 % % list of acronyms
 % \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
 % \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
@@ -66,9 +70,60 @@
 {RSA is public-key cryptosystem which was invented by Ron Rivest, Adi Shamir and Leonard Adleman. The cryptosystem was published in the 1977.}
 
 \section{Principle}
-{}
+{The cipher is based on modular exponation. The whole process of crypting message is divided to four steps}
+
+\subsection{Key generation}
+\begin{itemize}
+ \item Generate \(p\) and \(q\), which have to be distinct prime numbers.
+ \item Compute \(n\), where \(n = p * q\)
+ \item Compute Euler's totient function \(\Phi(n)\). Because we know \(p\) and \(q\) it is simple to compute it. \[\Phi(n) = (p - 1)*(q - 1)\]
+ \item Generate \(e\) such as \(\gcd(e,\Phi(n)) = 1\) 
+ \item Compute \(d = e^{-1}\bmod{\Phi(n)} \)
+ \item The pair \((e,n)\) is released as public key
+ \item The pair \((d,n)\) is secret private key
+\end{itemize}
+
+\subsection{Key distribution}
+{Alice would like to send Bob secret message. Bob generates public key \((e,n)\) and his private key \((d,n)\). Bob sends Alice public key using reliable route (it has not to be secret route),
+Alice uses it to encrypt her message and sends it to Bob. Bob decrypts her message using his private key.} 
+
+\subsection{Encryption}
+{Encryption is done by using public keypair \((e, n)\): \[c = | m^e | _n\]
+where \(m\) is plaintext message and \(c\) is encrypted message which will be sent to reciever.
+}
+\subsection{Decryption}
+{Decryption is done similar thanks to relation \(e*d \equiv 1 \pmod{\Phi(n)}\). We can simply power ciphertext to our private exponent \(d\) to obtain original message.  \[ |c^d|_n = |(m^e)^d|_n = | m^{e*d}|_n = |m^1|_n = m\]}
 
 \section{Optimalization}
+{Because we generally use high value of modulus \(n\). The exponation of such high numbers is very time consuming so there are some algorithms to increase speed of computation }
+
+\subsection{Square and Multiply}
+{This optimalization uses bitwise representation of the exponent we use. Cycling through all bits from MSB (most significant bit) 
+we determine which operation will be performed for each bit. For bits equal to 1 we perform squaring preset value then we multiply it with the base of exponation. 
+For bits equal to 0 we just perform squaring part.}
+
+\alglanguage{pseudocode}
+\begin{algorithm}
+\caption{Square \& Multiply algorithm}
+\begin{algorithmic}[1]
+
+\Function{Square\_and\_Multiply}{$m,e,n$}
+ \State $c\gets 1$
+ \State $k\gets BitLen(e)$
+ \For {$i \gets k-1, \, 0$}
+  \State $c \gets c^2$
+  \If {$e[i] == 1$}\Comment{\(i\)th bit of exponent \(e\) }
+   \State $c \gets c * m$
+  \EndIf
+ \EndFor
+\State \textbf{return} $c$
+\EndFunction
+ 
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{Chinese remainder theorem}
 
 \chapter{Attacks}
 
@@ -91,8 +146,8 @@
 \chapter{Acronyms}
 % \printglossaries
 \begin{description}
-	\item[GUI] Graphical user interface
-	\item[XML] Extensible markup language
+	\item[MSB] Most significant bit
+	\item[LSB] Least significant bit
 \end{description}
 
 
