@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2017.5.5)  6 MAY 2017 10:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2017.5.5)  14 MAY 2017 06:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -548,6 +548,50 @@ Sidefootvsep and sidefootheight: 13.6pt and 594.32022pt
 (/usr/share/texmf/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
 \etb@tempcnta=\count151
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2013/08/25 v0.4v Insert pages of external PDF documents (AM)
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count152
+\calc@Bcount=\count153
+\calc@Adimen=\dimen152
+\calc@Bdimen=\dimen153
+\calc@Askip=\skip186
+\calc@Bskip=\skip187
+LaTeX Info: Redefining \setlength on input line 75.
+LaTeX Info: Redefining \addtolength on input line 76.
+\calc@Ccount=\count154
+\calc@Cskip=\skip188
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2013/10/06 v2.0d eso-pic (RN)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count155
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
@@ -562,33 +606,37 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count152
-))
-\Gin@req@height=\dimen152
-\Gin@req@width=\dimen153
 )
+\Gin@req@height=\dimen154
+\Gin@req@width=\dimen155
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2013/08/25 v0.4v Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box29
+\AM@toc@title=\toks23
+\c@AM@survey=\count156
+\AM@templatesizebox=\box30
+))
 (/usr/share/texlive/texmf-dist/tex/generic/dirtree/dirtree.sty
 Package: dirtree 2012/12/11 v0.32 package wrapper for dirtree
 
 (/usr/share/texlive/texmf-dist/tex/generic/dirtree/dirtree.tex
 `dirtree' v0.32, 2012/12/11 (jcc)
-\DT@offset=\dimen154
-\DT@width=\dimen155
-\DT@sep=\dimen156
-\DT@all=\dimen157
-\DT@rulewidth=\dimen158
-\DT@dotwidth=\dimen159
-\DTbaselineskip=\dimen160
-\DT@counti=\count153
-\DT@countii=\count154
-\DT@countiii=\count155
-\DT@countiv=\count156
-\DT@indent=\dimen161
-\DT@parskip=\dimen162
-\DT@baselineskip=\dimen163
+\DT@offset=\dimen156
+\DT@width=\dimen157
+\DT@sep=\dimen158
+\DT@all=\dimen159
+\DT@rulewidth=\dimen160
+\DT@dotwidth=\dimen161
+\DTbaselineskip=\dimen162
+\DT@counti=\count157
+\DT@countii=\count158
+\DT@countiii=\count159
+\DT@countiv=\count160
+\DT@indent=\dimen163
+\DT@parskip=\dimen164
+\DT@baselineskip=\dimen165
 )
 File: dirtree.tex 2012/12/11 v0.32 `dirtree' (jcc)
 ) (./Template_BachelorsThesis.aux)
@@ -615,7 +663,7 @@ LaTeX Font Info:    Try loading font information for OT1+lmr on input line 47.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-\AtBeginShipoutBox=\box29
+\AtBeginShipoutBox=\box31
 Package hyperref Info: Link coloring OFF on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -624,7 +672,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count157
+\c@section@level=\count161
 )
 Redoing nameref's sectioning
 Redoing nameref's label
@@ -639,17 +687,17 @@ LaTeX Info: Redefining \nameref on input line 47.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count158
-\scratchdimen=\dimen164
-\scratchbox=\box30
-\nofMPsegments=\count159
-\nofMParguments=\count160
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count161
-\MPscratchDim=\dimen165
-\MPnumerator=\count162
-\makeMPintoPDFobject=\count163
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count162
+\scratchdimen=\dimen166
+\scratchbox=\box32
+\nofMPsegments=\count163
+\nofMParguments=\count164
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count165
+\MPscratchDim=\dimen167
+\MPnumerator=\count166
+\makeMPintoPDFobject=\count167
+\everyMPtoPDFconversion=\toks25
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -665,10 +713,45 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-[1
+<assignment.pdf, id=40, 597.23125pt x 844.15375pt>
+File: assignment.pdf Graphic file (type pdf)
+ <use assignment.pdf>
+Package pdftex.def Info: assignment.pdf used on input line 47.
+(pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
+File: assignment.pdf Graphic file (type pdf)
+
+<use assignment.pdf>
+Package pdftex.def Info: assignment.pdf used on input line 47.
+(pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
+
+<assignment.pdf, id=43, page=1, 597.23125pt x 844.15375pt>
+File: assignment.pdf Graphic file (type pdf)
+
+<use assignment.pdf, page 1>
+Package pdftex.def Info: assignment.pdf, page1 used on input line 47.
+(pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
+File: assignment.pdf Graphic file (type pdf)
+ <use assignment.pdf, page 1>
+Package pdftex.def Info: assignment.pdf, page1 used on input line 47.
+(pdftex.def)             Requested size: 597.73099pt x 844.86012pt.
+File: assignment.pdf Graphic file (type pdf)
+
+<use assignment.pdf, page 1>
+Package pdftex.def Info: assignment.pdf, page1 used on input line 47.
+(pdftex.def)             Requested size: 597.73099pt x 844.86012pt.
+File: assignment.pdf Graphic file (type pdf)
+ <use assignment.pdf, page 1>
+Package pdftex.def Info: assignment.pdf, page1 used on input line 47.
+(pdftex.def)             Requested size: 597.73099pt x 844.86012pt.
+File: assignment.pdf Graphic file (type pdf)
+
+<use assignment.pdf, page 1>
+Package pdftex.def Info: assignment.pdf, page1 used on input line 47.
+(pdftex.def)             Requested size: 597.73099pt x 844.86012pt.
+ [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+ <./assignment.pdf>] [2
 
 ]
 LaTeX Font Info:    Try loading font information for OML+lmm on input line 47.
@@ -695,7 +778,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 47.
 
-<cvut-logo-bw.pdf, id=46, 91.34125pt x 69.25874pt>
+<cvut-logo-bw.pdf, id=58, 91.34125pt x 69.25874pt>
 File: cvut-logo-bw.pdf Graphic file (type pdf)
  <use cvut-logo-bw.pdf>
 Package pdftex.def Info: cvut-logo-bw.pdf used on input line 47.
@@ -705,9 +788,9 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.47 \begin{document}
-                      [1 <./cvut-logo-bw.pdf>]pdfTeX warning (ext4): destinatio
-n with the same identifier (name{page.ii}) has been already used, duplicate ign
-ored
+                      [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./
+cvut-logo-bw.pdf>]pdfTeX warning (ext4): destination with the same identifier (
+name{page.ii}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.47 \begin{document}
@@ -757,57 +840,70 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
 
 ] [3] [4
 
-] [5] [6
+]
+Overfull \hbox (0.71289pt too wide) in paragraph at lines 61--62
+\OT1/lmr/m/n/10.95 RSA is public-key cryptosys-tem which was in-ven-ted by Ron 
+Rivest, Adi Shamir
+ []
 
-] [7] [8
+[5] [6] [7
 
-] (./Template_BachelorsThesis.bbl
-[9] [10
+] [8
+
+]
+Overfull \hbox (0.71289pt too wide) in paragraph at lines 77--78
+\OT1/lmr/m/n/10.95 RSA is public-key cryptosys-tem which was in-ven-ted by Ron 
+Rivest, Adi Shamir
+ []
+
+[9] [10] (./Template_BachelorsThesis.bbl [11
+
+] [12
 
 ]
 bibitemlist
 
 LaTeX Warning: Empty `thebibliography' environment on input line 10.
 
-) [11] [12
+) [13] [14
 
-] [13] [14
+] [15] [16
 
 ]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 96.
-
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 122
+.
  (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [15]
+) [17]
 \tf@toc=\write5
 \openout5 = `Template_BachelorsThesis.toc'.
 
 \tf@lof=\write6
 \openout6 = `Template_BachelorsThesis.lof'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 99.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 99.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 125.
 
 (./Template_BachelorsThesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 99.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 99.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 125.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 125.
 Package rerunfilecheck Info: File `Template_BachelorsThesis.out' has not change
 d.
-(rerunfilecheck)             Checksum: 8E1204C514E3450459D64DF941A3CF9C;919.
+(rerunfilecheck)             Checksum: A12C0975E4A968D604B9DCF5BB2F96FC;916.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 99.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
  ) 
 Here is how much of TeX's memory you used:
- 12898 strings out of 493105
- 179450 string characters out of 6137073
- 301657 words of memory out of 5000000
- 16218 multiletter control sequences out of 15000+600000
- 58530 words of font info for 41 fonts, out of 8000000 for 9000
+ 14038 strings out of 493105
+ 195505 string characters out of 6137073
+ 328195 words of memory out of 5000000
+ 17328 multiletter control sequences out of 15000+600000
+ 61278 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,13n,25p,1110b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,18n,45p,1110b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sha
 re/texmf/fonts/enc/dvips/lm/lm-rmsc.enc}</usr/share/texmf/fonts/type1/public/lm
@@ -818,10 +914,10 @@ nts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb>
 </usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type
 1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on Template_BachelorsThesis.pdf (29 pages, 246776 bytes).
+Output written on Template_BachelorsThesis.pdf (31 pages, 292744 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
- 190 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
- 70 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 260 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
+ 44 named destinations out of 1000 (max. 500000)
+ 98 words of extra memory for PDF output out of 10000 (max. 10000000)
 

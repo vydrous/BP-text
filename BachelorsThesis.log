@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2017.5.5)  12 MAY 2017 23:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2017.5.5)  14 MAY 2017 22:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -618,86 +618,144 @@ File: pppdftex.def 2013/08/25 v0.4v Pdfpages driver for pdfTeX (AM)
 \c@AM@survey=\count156
 \AM@templatesizebox=\box30
 ))
-(/usr/share/texlive/texmf-dist/tex/generic/dirtree/dirtree.sty
-Package: dirtree 2012/12/11 v0.32 package wrapper for dirtree
-
-(/usr/share/texlive/texmf-dist/tex/generic/dirtree/dirtree.tex
-`dirtree' v0.32, 2012/12/11 (jcc)
-\DT@offset=\dimen156
-\DT@width=\dimen157
-\DT@sep=\dimen158
-\DT@all=\dimen159
-\DT@rulewidth=\dimen160
-\DT@dotwidth=\dimen161
-\DTbaselineskip=\dimen162
-\DT@counti=\count157
-\DT@countii=\count158
-\DT@countiii=\count159
-\DT@countiv=\count160
-\DT@indent=\dimen163
-\DT@parskip=\dimen164
-\DT@baselineskip=\dimen165
-)
-File: dirtree.tex 2012/12/11 v0.32 `dirtree' (jcc)
-)
 (/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count161
+\c@float@type=\count157
 \float@exts=\toks24
 \float@box=\box31
 \@float@everytoks=\toks25
 \@floatcapt=\box32
 )
 \@float@every@algorithm=\toks26
-\c@algorithm=\count162
+\c@algorithm=\count158
 )
 (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count163
-\c@ALG@rem=\count164
-\c@ALG@nested=\count165
+\c@ALG@line=\count159
+\c@ALG@rem=\count160
+\c@ALG@nested=\count161
 \ALG@tlm=\skip189
 \ALG@thistlm=\skip190
-\c@ALG@Lnr=\count166
-\c@ALG@blocknr=\count167
-\c@ALG@storecount=\count168
-\c@ALG@tmpcounter=\count169
+\c@ALG@Lnr=\count162
+\c@ALG@blocknr=\count163
+\c@ALG@storecount=\count164
+\c@ALG@tmpcounter=\count165
 \ALG@tmplength=\skip191
 ) (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
 
 Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip192
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks27
+\ex@=\dimen156
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen157
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count166
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count167
+\leftroot@=\count168
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count169
+\DOTSCASE@=\count170
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box33
+\strutbox@=\box34
+\big@size=\dimen158
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count171
+\c@MaxMatrixCols=\count172
+\dotsspace@=\muskip11
+\c@parentequation=\count173
+\dspbrk@lvl=\count174
+\tag@help=\toks28
+\row@=\count175
+\column@=\count176
+\maxfields@=\count177
+\andhelp@=\toks29
+\eqnshift@=\dimen159
+\alignsep@=\dimen160
+\tagshift@=\dimen161
+\tagwidth@=\dimen162
+\totwidth@=\dimen163
+\lineht@=\dimen164
+\@envbody=\toks30
+\multlinegap=\skip193
+\multlinetaggap=\skip194
+\mathdisplay@stack=\toks31
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/dirtree/dirtree.sty
+Package: dirtree 2012/12/11 v0.32 package wrapper for dirtree
+
+(/usr/share/texlive/texmf-dist/tex/generic/dirtree/dirtree.tex
+`dirtree' v0.32, 2012/12/11 (jcc)
+\DT@offset=\dimen165
+\DT@width=\dimen166
+\DT@sep=\dimen167
+\DT@all=\dimen168
+\DT@rulewidth=\dimen169
+\DT@dotwidth=\dimen170
+\DTbaselineskip=\dimen171
+\DT@counti=\count178
+\DT@countii=\count179
+\DT@countiii=\count180
+\DT@countiv=\count181
+\DT@indent=\dimen172
+\DT@parskip=\dimen173
+\DT@baselineskip=\dimen174
+)
+File: dirtree.tex 2012/12/11 v0.32 `dirtree' (jcc)
 ) (./BachelorsThesis.aux)
 \openout1 = `BachelorsThesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 56.
- (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 57.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-\AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring OFF on input line 56.
+\AtBeginShipoutBox=\box35
+Package hyperref Info: Link coloring OFF on input line 57.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -705,14 +763,14 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count170
+\c@section@level=\count182
 )
 Redoing nameref's sectioning
 Redoing nameref's label
-LaTeX Info: Redefining \nameref on input line 56.
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \nameref on input line 57.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
 (./BachelorsThesis.out) (./BachelorsThesis.out)
 \@outlinefile=\write4
 \openout4 = `BachelorsThesis.out'.
@@ -720,17 +778,17 @@ LaTeX Info: Redefining \nameref on input line 56.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count171
-\scratchdimen=\dimen166
-\scratchbox=\box34
-\nofMPsegments=\count172
-\nofMParguments=\count173
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count174
-\MPscratchDim=\dimen167
-\MPnumerator=\count175
-\makeMPintoPDFobject=\count176
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count183
+\scratchdimen=\dimen175
+\scratchbox=\box36
+\nofMPsegments=\count184
+\nofMParguments=\count185
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count186
+\MPscratchDim=\dimen176
+\MPnumerator=\count187
+\makeMPintoPDFobject=\count188
+\everyMPtoPDFconversion=\toks33
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -749,37 +807,37 @@ e
 <assignment.pdf, id=56, 597.23125pt x 844.15375pt>
 File: assignment.pdf Graphic file (type pdf)
  <use assignment.pdf>
-Package pdftex.def Info: assignment.pdf used on input line 56.
+Package pdftex.def Info: assignment.pdf used on input line 57.
 (pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
 File: assignment.pdf Graphic file (type pdf)
 
 <use assignment.pdf>
-Package pdftex.def Info: assignment.pdf used on input line 56.
+Package pdftex.def Info: assignment.pdf used on input line 57.
 (pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
 
 <assignment.pdf, id=59, page=1, 597.23125pt x 844.15375pt>
 File: assignment.pdf Graphic file (type pdf)
 
 <use assignment.pdf, page 1>
-Package pdftex.def Info: assignment.pdf, page1 used on input line 56.
+Package pdftex.def Info: assignment.pdf, page1 used on input line 57.
 (pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
 File: assignment.pdf Graphic file (type pdf)
  <use assignment.pdf, page 1>
-Package pdftex.def Info: assignment.pdf, page1 used on input line 56.
+Package pdftex.def Info: assignment.pdf, page1 used on input line 57.
 (pdftex.def)             Requested size: 597.73099pt x 844.86012pt.
 File: assignment.pdf Graphic file (type pdf)
 
 <use assignment.pdf, page 1>
-Package pdftex.def Info: assignment.pdf, page1 used on input line 56.
+Package pdftex.def Info: assignment.pdf, page1 used on input line 57.
 (pdftex.def)             Requested size: 597.73099pt x 844.86012pt.
 File: assignment.pdf Graphic file (type pdf)
  <use assignment.pdf, page 1>
-Package pdftex.def Info: assignment.pdf, page1 used on input line 56.
+Package pdftex.def Info: assignment.pdf, page1 used on input line 57.
 (pdftex.def)             Requested size: 597.73099pt x 844.86012pt.
 File: assignment.pdf Graphic file (type pdf)
 
 <use assignment.pdf, page 1>
-Package pdftex.def Info: assignment.pdf, page1 used on input line 56.
+Package pdftex.def Info: assignment.pdf, page1 used on input line 57.
 (pdftex.def)             Requested size: 597.73099pt x 844.86012pt.
  [1
 
@@ -787,73 +845,73 @@ Package pdftex.def Info: assignment.pdf, page1 used on input line 56.
  <./assignment.pdf>] [2
 
 ]
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 56.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 57.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 56.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 57.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 56.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 57.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 56.
+(Font)              <10.95> on input line 57.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 56.
+(Font)              <8> on input line 57.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 56.
+(Font)              <6> on input line 57.
 
 <cvut-logo-bw.pdf, id=74, 91.34125pt x 69.25874pt>
 File: cvut-logo-bw.pdf Graphic file (type pdf)
  <use cvut-logo-bw.pdf>
-Package pdftex.def Info: cvut-logo-bw.pdf used on input line 56.
+Package pdftex.def Info: cvut-logo-bw.pdf used on input line 57.
 (pdftex.def)             Requested size: 59.04135pt x 44.76717pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.56 \begin{document}
+l.57 \begin{document}
                       [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./
 cvut-logo-bw.pdf>]pdfTeX warning (ext4): destination with the same identifier (
 name{page.ii}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.56 \begin{document}
+l.57 \begin{document}
                       [2
 
 ]
 
 LaTeX Font Warning: Font shape `OT1/lmr/bx/sc' undefined
-(Font)              using `OT1/lmr/bx/n' instead on input line 56.
+(Font)              using `OT1/lmr/bx/n' instead on input line 57.
 
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 56.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 57.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
 LaTeX Font Warning: Font shape `OT1/lmss/bx/sc' undefined
-(Font)              using `OT1/lmss/bx/n' instead on input line 56.
+(Font)              using `OT1/lmss/bx/n' instead on input line 57.
 
 [5
 
 ] [6
 
 ] [7]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 56.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 57.
  (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 56.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 57.
  [8
 
 ] [9
@@ -873,83 +931,89 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
 
 ] [3] [4
 
+] [5] [6]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 166.
+ [7]
+Underfull \vbox (badness 2359) has occurred while \output is active []
+
+ [8]
+[9] [10
+
 ]
-Overfull \hbox (0.71289pt too wide) in paragraph at lines 70--71
-\OT1/lmr/m/n/10.95 RSA is public-key cryptosys-tem which was in-ven-ted by Ron 
-Rivest, Adi Shamir
+Overfull \hbox (11.80405pt too wide) in paragraph at lines 246--248
+[] \OT1/lmr/m/n/10.95 We need or-acle $\OML/lmm/m/it/10.95 O$ \OT1/lmr/m/n/10.9
+5 which pre-dict whether fi-nal Mont-gomery re-duc-tion happened
  []
 
-[5]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 107.
- [6] [7
+[11] [12] [13
 
-] [8
+] [14
 
-] [9] [10
-
-] (./BachelorsThesis.bbl [11] [12
+] (./BachelorsThesis.bbl [15] [16
 
 ]
 bibitemlist
 
 LaTeX Warning: Empty `thebibliography' environment on input line 10.
 
-) [13] [14
+) [17] [18
 
-] [15] [16
+] [19] [20
 
 ]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 168
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 317
 .
  (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [17]
+) [21]
 \tf@toc=\write5
 \openout5 = `BachelorsThesis.toc'.
 
 \tf@lof=\write6
 \openout6 = `BachelorsThesis.lof'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 320.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 320.
 
 (./BachelorsThesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 171.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 320.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 320.
 Package rerunfilecheck Info: File `BachelorsThesis.out' has not changed.
-(rerunfilecheck)             Checksum: 0FC7E207DE6DD9329FD8935BC8283F0D;1428.
+(rerunfilecheck)             Checksum: 76C434C6D7F3FCACC26BA9148E676D11;1420.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 171.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 320.
  ) 
 Here is how much of TeX's memory you used:
- 14651 strings out of 493105
- 204272 string characters out of 6137073
- 338312 words of memory out of 5000000
- 17914 multiletter control sequences out of 15000+600000
- 64225 words of font info for 43 fonts, out of 8000000 for 9000
+ 15277 strings out of 493105
+ 211384 string characters out of 6137073
+ 352682 words of memory out of 5000000
+ 18488 multiletter control sequences out of 15000+600000
+ 67806 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,18n,45p,1101b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,18n,45p,1101b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/
-dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
-lm-rmsc.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
-i10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on BachelorsThesis.pdf (31 pages, 340958 bytes).
+dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/sha
+re/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
+lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmsc.enc}</usr/share/texm
+f/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx
+12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt1
+0.pfb>
+Output written on BachelorsThesis.pdf (35 pages, 360090 bytes).
 PDF statistics:
- 306 PDF objects out of 1000 (max. 8388607)
- 249 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
+ 362 PDF objects out of 1000 (max. 8388607)
+ 300 compressed objects within 3 object streams
+ 88 named destinations out of 1000 (max. 500000)
  130 words of extra memory for PDF output out of 10000 (max. 10000000)
 

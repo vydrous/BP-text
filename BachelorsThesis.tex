@@ -10,17 +10,18 @@
 % \usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
 % \usepackage[latin2]{inputenc} % LaTeX source encoded as ISO-8859-2
 % \usepackage[cp1250]{inputenc} % LaTeX source encoded as Windows-1250
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
 
 \usepackage{graphicx} %graphics files inclusion
 % \usepackage{subfig} %subfigures
-% \usepackage{amsmath} %advanced maths
+\usepackage{amsmath} %advanced maths
 % \usepackage{amssymb} %additional math symbols
 
 \usepackage{dirtree} %directory tree visualisation
 
-\usepackage{algorithm}
-\usepackage{algorithmicx}
-\usepackage{algpseudocode}
+
 
 % % list of acronyms
 % \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
@@ -48,7 +49,7 @@
   zabyvajicimi se pocitacovou bezpecnosti. }
 \placeForDeclarationOfAuthenticity{Prague}
 \keywordsCS{Replace with comma-separated list of keywords in Czech.}
-\keywordsEN{RSA, cryptoanalysis, timming attack, side channel, square and multiply}
+\keywordsEN{RSA, cryptoanalysis, timing attack, side channel, square and multiply}
 \declarationOfAuthenticityOption{1} %select as appropriate, according to the desired license (integer 1-6)
 % \website{http://site.example/thesis} %optional thesis URL
 
@@ -64,56 +65,158 @@
 
 
 \setsecnumdepth{all}
+\pagestyle{ruled}
 \chapter{State-of-the-art}
 
 \chapter{RSA}
+
+\paragraph*{}
 {RSA is public-key cryptosystem which was invented by Ron Rivest, Adi Shamir and Leonard Adleman. The cryptosystem was published in the 1977.}
 
+
 \section{Principle}
-{The cipher is based on modular exponation. The whole process of crypting message is divided to four steps}
+\paragraph*{}
+{The cipher is based on modular exponentiation. The whole process of crypting message is divided to four steps}
 
 \subsection{Key generation}
+\paragraph*{}
+{This is steps needed to generate public and private keypair}
 \begin{itemize}
  \item Generate \(p\) and \(q\), which have to be distinct prime numbers.
- \item Compute \(n\), where \(n = p * q\)
- \item Compute Euler's totient function \(\Phi(n)\). Because we know \(p\) and \(q\) it is simple to compute it. \[\Phi(n) = (p - 1)*(q - 1)\]
- \item Generate \(e\) such as \(\gcd(e,\Phi(n)) = 1\) 
- \item Compute \(d = e^{-1}\bmod{\Phi(n)} \)
+ \item Compute \(n\), where \(n = p  q\)
+ \item Compute Euler's totient function \(\phi(n)\). Because we know \(p\) and \(q\) it is simple to compute it. \[\phi(n) = (p - 1)(q - 1)\]
+ \item Generate \(e\) such as \(\gcd(e,\phi(n)) = 1\) 
+ \item Compute \(d = e^{-1}\bmod{\phi(n)} \)
  \item The pair \((e,n)\) is released as public key
  \item The pair \((d,n)\) is secret private key
 \end{itemize}
 
 \subsection{Key distribution}
+\paragraph*{}
 {Alice would like to send Bob secret message. Bob generates public key \((e,n)\) and his private key \((d,n)\). Bob sends Alice public key using reliable route (it has not to be secret route),
 Alice uses it to encrypt her message and sends it to Bob. Bob decrypts her message using his private key.} 
 
 \subsection{Encryption}
+\paragraph*{}
 {Encryption is done by using public keypair \((e, n)\): \[c = | m^e | _n\]
-where \(m\) is plaintext message and \(c\) is encrypted message which will be sent to reciever.
+where \(m\) is plaintext message and \(c\) is encrypted message which will be sent to receiver.
 }
 \subsection{Decryption}
-{Decryption is done similar thanks to relation \(e*d \equiv 1 \pmod{\Phi(n)}\). We can simply power ciphertext to our private exponent \(d\) to obtain original message.  \[ |c^d|_n = |(m^e)^d|_n = | m^{e*d}|_n = |m^1|_n = m\]}
+\paragraph*{}
+{Decryption is done similar thanks to relation \(ed \equiv 1 \pmod{\phi(n)}\). We can simply power ciphertext to our private exponent \(d\) to obtain original message.  
+\[ |c^d|_n = |(m^e)^d|_n = | m^{ed}|_n = |m^1|_n = m\]}
 
-\section{Optimalization}
-{Because we generally use high value of modulus \(n\). The exponation of such high numbers is very time consuming so there are some algorithms to increase speed of computation }
+\section{Optimization}
+\paragraph*{}
+{Because we generally use high value of modulus \(n\) the exponentiation of such high numbers is very time consuming so there are some algorithms to increase speed of computation }
+
+\subsection{Chinese remainder theorem}
+
+\paragraph*{}
+{By using CRT we can significantly speed up decryption of received messages. This method is not usable during encrypting phase because we need to know \(p\) and \(q\) factors of \(n\).
+Assuming that \(p>q\) we can precompute:}
+
+\[dP = e^{-1} \pmod{p-1}\]
+\[dQ = e^{-1} \pmod{q-1}\]
+\[qInv = q^{-1} \pmod{p}\]
+
+\paragraph*{}
+{After that, we compute message \(m\) with given c:}
+
+\[m_1 = c^{dP} \pmod{p}\]
+\[m_2 = c^{dQ} \pmod{q}\]
+\[h = qInv \cdot (m_1 - m_2) \pmod{p}\]  
+\[m = m_2 + hq\]
+
+\paragraph*{}
+{Finding modular exponentiation cost grows with cube of number of the bits in \(n\), so it is still more efficient to do two exponentiation with half sized modulus}
+
+
+
+\subsection{Montgomery Multiplication}
+
+\paragraph*{}
+{Normal modular multiplication could be quite slow for large numbers, due to processor have to run several operations before it gets desired remainder. 
+On the other hand P. L. Montgomery developed algorithm which assumes that processor do division by power of 2 really fast.}
+\paragraph*{}{
+Montgomery presented algorithm, which transform numbers to Montgomery base and then compute modular multiplication efficiently.
+To transform number to Montgomery base we need to compute \(\bar{a} = ar \pmod{n}\) where \(r\) is the next greater power of 2 than \(n\). For example if \(2^{63} < n < 2^{64}\) 
+then desired \(r\) will be \(2^{64}\). The multiplication in Montgomery base is done by: \[\bar{u} = \bar{a}\bar{b}r^{-1} \pmod{n}\] where \(r{-1}\) is modular inversion of \(r\).
+}
+\paragraph*{}{
+As we can see \(\bar{u}\) is in Montgomery base of the corresponding 
+\(u = ab \pmod{n}\) 
+since}
+
+\begin{equation}
+\begin{split}
+\bar{u} & = \bar{a}\bar{b}r^{-1} \pmod{n} \\
+ & = (ar)(br)r^{-1} \pmod{n} \\
+ & = (ab)r \pmod{n}
+\end{split}
+\end{equation}
+\medskip
+
+\paragraph{}{
+Montgomery reduction which gives us \(\bar{u}\) is implemented this way:
+}
+
+\begin{algorithm}[H]
+\alglanguage{pseudocode}
+\caption{Montgomery Reduction}
+\begin{algorithmic}[1]
+\Function{Mon\_Red}{$\bar{a},\bar{b}, N$}
+ \State $t \gets\bar{a} *\bar{b}$
+ \State $m \gets N^{-1} * t \pmod{r}$
+ \State $\bar{u} \gets (t + mN) / r$
+ \If {$\bar{u}>N$}
+  \State $\bar{u} \gets\bar{u} - N$
+ \EndIf
+\State \textbf{return} $\bar{u}$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph*{}
+{
+Its main advance is that it never performs division by the modulus \(n\) but we still need to find out \(u\) and precompute \(n^{-1}\) using the extended Euclidean algorithm.
+It is done by this algorithm: }
+
+\begin{algorithm}[H]
+\caption{Montgomery Multiplication}
+\begin{algorithmic}[1]
+\Function{Mon\_Mult}{$a,b, n$}
+ \State $r \gets 2^{BitLen(n)}$
+ \State \textit{Compute \(n^{-1}\) using the extended Euclidean algorithm}
+ \State $\bar{a} \gets a *r \pmod{n}$
+ \State $\bar{b} \gets b * r \pmod{n}$
+ \State $\bar{u} \gets Mon_Red(\bar{a}, \bar{b})$
+ \State $u \gets Mon_Red(\bar{u}, 1)$
+ \State \textbf{return} $u$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
 
 \subsection{Square and Multiply}
-{This optimalization uses bitwise representation of the exponent we use. Cycling through all bits from MSB (most significant bit) 
-we determine which operation will be performed for each bit. For bits equal to 1 we perform squaring preset value then we multiply it with the base of exponation. 
-For bits equal to 0 we just perform squaring part.}
+\paragraph*{}
+{This optimization uses bitwise representation of the exponent. The algorithm picks all byte from left (MSB) to right and despite their value, 
+it determines which operation will be performed for each bit. For bits equal to 1 we perform squaring preset value \(c\) then we multiply it with the base of exponentiation \(m\). 
+For bits equal to 0 we just perform squaring part. Therefore we get data dependent operation, which will be used in our attack. For even faster implementation we use Montgomery
+multiplication instead of normal one. In some theses this Square and Multiply algorithm is called Montgomery exponentiation}
 
-\alglanguage{pseudocode}
-\begin{algorithm}
+
+
+\begin{algorithm}[H]
 \caption{Square \& Multiply algorithm}
 \begin{algorithmic}[1]
-
 \Function{Square\_and\_Multiply}{$m,e,n$}
  \State $c\gets 1$
  \State $k\gets BitLen(e)$
  \For {$i \gets k-1, \, 0$}
-  \State $c \gets c^2$
+  \State $c \gets Mon_Mult(c,c)$
   \If {$e[i] == 1$}\Comment{\(i\)th bit of exponent \(e\) }
-   \State $c \gets c * m$
+   \State $c \gets Mon_Mult(c,m)$
   \EndIf
  \EndFor
 \State \textbf{return} $c$
@@ -123,13 +226,58 @@ For bits equal to 0 we just perform squaring part.}
 \end{algorithm}
 
 
-\subsection{Chinese remainder theorem}
 
 \chapter{Attacks}
+\paragraph*{}{
+The basic idea of timing attacks was presented by Kocher in 1996. He specified theoretical attacks not only on RSA.
+}
 
+\paragraph*{}{
+Both variant of attack are based on similar principle. They divide messages from set \(M\) to several subsets \(M_i\) due to response of some Oracle \(O\). Then by measuring time of decrypting or signing and 
+guessing bits of secret exponent by comparing times of each set.
+}
 \section{Attack on multiply}
+\paragraph*{}{
+First Kochers idea was to exploit multiply operation in Square and Multiply algorithm. Kocher mean to measure time of decryption (or signing) messages using the private key \(d\) 
+and focus on conditional multiply step. We are attacking each bit of \(d\). Let \(d = d_1,d_2, \ldots ,d_k \) where \(k\) is bit length of \(d\) and \(d_1\) is MSB. 
+We can assume that \( d_1 = 1\) so we will attack bit \(d_2\).
+}
+\paragraph*{}{
+We need oracle \(O\) which predict whether final Montgomery reduction happened during multiply step:
+}
+\paragraph*{}
+
+\( O(m) =\) $\left\{
+  \begin{array}{cl}
+    \text{1} & \text{\mbox{if}  \(m^2 * m\) is done with final reduction} \\
+    \text{0} & \text{\mbox{if}  \(m^2 * m\) is done without final reduction} 
+  \end{array}
+\right.$
+
+\paragraph*{}
+{
+where \(m\) is message from set \(M\). By that criterion we can divide messages to 2 subsets:}
+
+\[M_1 = \{m \in M_1 : O(m) = 1\}\]
+\[ M_2 = \{m \in M_2 : O(m) = 0\}\]
+
+\paragraph*{}{
+We can now measure time of these two subsets. We are expecting same times for doing square part, but in multiply part will be messages from \(M_1\) higher, due to
+final Montgomery Reduction. We compare means of sets \(M_1\) and \(M_2\). If time of \(M_1\) is significantly bigger then the final reduction was done therefore bit \(d_2\)
+is 1. If the times of \(M_1\) and \(M_2\) are equal then bit \(d_2\) is 0.}
+
+\paragraph*{Problem:}{
+We cannot be sure what is significant difference between time means. So we cannot be sure that 
+}
+ 
+
+
+
 
 \section{Attack on square}
+\paragraph*{}{
+
+}
 
 \chapter{Realisation}
 
@@ -148,6 +296,7 @@ For bits equal to 0 we just perform squaring part.}
 \begin{description}
 	\item[MSB] Most significant bit
 	\item[LSB] Least significant bit
+	\item[CRT] Chinese remainder theorem
 \end{description}
 
 
