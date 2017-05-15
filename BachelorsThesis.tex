@@ -239,8 +239,8 @@ guessing bits of secret exponent by comparing times of each set.
 \section{Attack on multiply}
 \paragraph*{}{
 First Kochers idea was to exploit multiply operation in Square and Multiply algorithm. Kocher mean to measure time of decryption (or signing) messages using the private key \(d\) 
-and focus on conditional multiply step. We are attacking each bit of \(d\). Let \(d = d_1,d_2, \ldots ,d_k \) where \(k\) is bit length of \(d\) and \(d_1\) is MSB. 
-We can assume that \( d_1 = 1\) so we will attack bit \(d_2\).
+and focus on conditional multiply step. We are attacking each bit of \(d\) with knowledge of \( i-1\) bits we can guess the \(i\)th bit. Let \(d = d_1,d_2, \ldots ,d_k \) where \(k\) is bit length of \(d\) and \(d_1\) is MSB. 
+We can assume that \( d_1 = 1\) so we can attack bit \(d_2\).
 }
 \paragraph*{}{
 We need oracle \(O\) which predict whether final Montgomery reduction happened during multiply step:
@@ -256,26 +256,107 @@ We need oracle \(O\) which predict whether final Montgomery reduction happened d
 
 \paragraph*{}
 {
-where \(m\) is message from set \(M\). By that criterion we can divide messages to 2 subsets:}
+where \(m\) is message from set \(M\). We can now divide messages to 2 subsets:}
 
-\[M_1 = \{m \in M_1 : O(m) = 1\}\]
-\[ M_2 = \{m \in M_2 : O(m) = 0\}\]
+\[M_1 = \{m \in M : O(m) = 1\}\]
+\[M_2 = \{m \in M : O(m) = 0\}\]
 
 \paragraph*{}{
 We can now measure time of these two subsets. We are expecting same times for doing square part, but in multiply part will be messages from \(M_1\) higher, due to
 final Montgomery Reduction. We compare means of sets \(M_1\) and \(M_2\). If time of \(M_1\) is significantly bigger then the final reduction was done therefore bit \(d_2\)
-is 1. If the times of \(M_1\) and \(M_2\) are equal then bit \(d_2\) is 0.}
+is 1. If the times of \(M_1\) and \(M_2\) are equal then bit \(d_2\) is 0. . }
 
 \paragraph*{Problem:}{
-We cannot be sure what is significant difference between time means. So we cannot be sure that 
-}
- 
-
-
-
+We cannot be sure what is significant difference between time means. So our guesses cannot be precise.}
 
 \section{Attack on square}
 \paragraph*{}{
+Focusing on squaring operation will give us better results. The procedure is similar but we generate two oracles and four sets of messages. We similarly iterate
+through the bits of secret key \(d\) as in multiply attack. When we know \( i - 1 \) bits and we are guessing \(i\)th bit we compute \(m_{temp}\) which has value before unknown possible multiplication step.
+}
+\paragraph*{}{
+We first presume that bit \(d_i\) is 1. If the presumption is right then the following steps will be executed. \(m_{temp}\) will be multiplied by \(m\), 
+then the result of multiplication will be squared. We will execute the multiplication step and then we will check if in the square step is done with or without reduction.
+By this criterion we divide messages to subsets \(M_1\) if the reduction was computed or \(M_2\) if not. The oracle will be:
+}
+\paragraph*{}
+\( O_1(m) =\) $\left\{
+  \begin{array}{cl}
+    \text{1} & \text{\mbox{if}  \((m_{temp} * m)^2\) is done with final reduction} \\
+    \text{0} & \text{\mbox{if}  \((m_{temp} * m)^2\) is done without final reduction} 
+  \end{array}
+\right.$
+\paragraph*{}{
+Secondly, we presume that bit \(d_i\) is 0. In that case only the square phase \(m_{temp}^2\) will be executed so we similarly divide messages to subsets \(M_3\) with reduction and 
+\(M_4\) without reduction. Oracle \(O_2\):
+}
+
+
+\paragraph*{}
+\( O_2(m) =\) $\left\{
+  \begin{array}{cl}
+    \text{1} & \text{\mbox{if}  \(m_{temp}^2\) is done with final reduction} \\
+    \text{0} & \text{\mbox{if}  \(m_{temp}^2\) is done without final reduction} 
+  \end{array}
+\right.$
+
+\paragraph*{}{
+We now get 4 subsets of \(M\):
+}
+\paragraph*{}
+\[M_1 = \{m \in M : O_1(m) = 1\}\]
+\[M_2 = \{m \in M : O_1(m) = 0\}\]
+\[M_3 = \{m \in M : O_2(m) = 1\}\]
+\[M_4 = \{m \in M : O_2(m) = 0\}\]
+
+\paragraph*{}
+{Let \(T_i(M_i)\) be the mean time of computing messages from \(M_i\). }
+
+
+\paragraph*{}{
+Certainly, only one of oracles is giving us the right results. We can compare time difference between \( O_1 \) and \(O_2\). That means if \(T_1 - T_2 \) is greater than 
+\(T_3 - T_4\) then we can be sure that bit \(d_i\) is 1, otherwise \(d-i\) is 0. The problem from multiply attack is no more actual because one of the differences have to be higher
+than other.
+}
+
+
+\chapter{Defense}
+\section{Additional reduction}
+\paragraph*{}{
+The most obvious defense is to add dummy subtraction to Montgomery reduction algorithm which does not change any value but consume the same amount of time as if the real subtraction
+was performed. This should not significantly slow the computation but it totally eliminate this type of timing attack by making Montgomery reduction constant time function.
+}
+
+\section{Masking}
+\paragraph*{}{
+We can mask the ciphertext before computation of \(c^d \pmod{n}\) so the attacker will not know which cipher text is decrypted. It is done simply by generating pair of masks 
+before each exponentiation. We generate random mask \(m\). Then we compute \(m'\):
+\[ m' = (m^{-1})^e \pmod{n}\]
+where \(e\) is public exponent.
+}
+\paragraph*{}
+{Before each exponentiation we multiply the ciphertext \(c\) with mask \(m'\) so we get masked \(x_m\):
+\begin{equation}
+\begin{split}
+ x_m & = (c*m')^d \pmod{n} \\
+ & = (c * (m^{-1})^e)^d \pmod{n}  \\
+ & = c^d * m^{-1} \pmod{n}
+\end{split}
+\end{equation}
+from where we can see that \(c^d\) is our desired message masked by \(m^{-1}\). Then we simply recover \(x\) by multiplying by \(m\):
+\begin{equation}
+\begin{split}
+ x & = x_m * m \pmod{n} \\
+ & = x * m^{-1} * m \pmod{n}  \\
+ & = x \pmod{n}
+\end{split}
+\end{equation}
+}
+
+\paragraph*{}{
+To avoid situation when even generating of mask could become target of timing attack, there is simple workaround. To generate new mask, just square the mask pair:
+\[m = m^2 \pmod{n}\]
+\[m' = m'^2 \pmod{n}\]
 
 }
 

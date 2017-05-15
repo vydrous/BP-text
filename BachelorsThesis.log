@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2017.5.5)  14 MAY 2017 22:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2017.5.5)  15 MAY 2017 03:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -804,7 +804,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<assignment.pdf, id=56, 597.23125pt x 844.15375pt>
+<assignment.pdf, id=68, 597.23125pt x 844.15375pt>
 File: assignment.pdf Graphic file (type pdf)
  <use assignment.pdf>
 Package pdftex.def Info: assignment.pdf used on input line 57.
@@ -815,7 +815,7 @@ File: assignment.pdf Graphic file (type pdf)
 Package pdftex.def Info: assignment.pdf used on input line 57.
 (pdftex.def)             Requested size: 597.22978pt x 844.15169pt.
 
-<assignment.pdf, id=59, page=1, 597.23125pt x 844.15375pt>
+<assignment.pdf, id=71, page=1, 597.23125pt x 844.15375pt>
 File: assignment.pdf Graphic file (type pdf)
 
 <use assignment.pdf, page 1>
@@ -869,7 +869,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 57.
 
-<cvut-logo-bw.pdf, id=74, 91.34125pt x 69.25874pt>
+<cvut-logo-bw.pdf, id=86, 91.34125pt x 69.25874pt>
 File: cvut-logo-bw.pdf Graphic file (type pdf)
  <use cvut-logo-bw.pdf>
 Package pdftex.def Info: cvut-logo-bw.pdf used on input line 57.
@@ -946,52 +946,54 @@ Overfull \hbox (11.80405pt too wide) in paragraph at lines 246--248
 5 which pre-dict whether fi-nal Mont-gomery re-duc-tion happened
  []
 
-[11] [12] [13
+[11] [12] [13] [14
 
-] [14
+] [15] [16] [17
 
-] (./BachelorsThesis.bbl [15] [16
+] [18
+
+] (./BachelorsThesis.bbl [19] [20
 
 ]
 bibitemlist
 
 LaTeX Warning: Empty `thebibliography' environment on input line 10.
 
-) [17] [18
+) [21] [22
 
-] [19] [20
+] [23] [24
 
 ]
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 317
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 398
 .
  (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [21]
+) [25]
 \tf@toc=\write5
 \openout5 = `BachelorsThesis.toc'.
 
 \tf@lof=\write6
 \openout6 = `BachelorsThesis.lof'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 320.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 320.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 401.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 401.
 
 (./BachelorsThesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 320.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 320.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 401.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 401.
 Package rerunfilecheck Info: File `BachelorsThesis.out' has not changed.
-(rerunfilecheck)             Checksum: 76C434C6D7F3FCACC26BA9148E676D11;1420.
+(rerunfilecheck)             Checksum: 00F59642C49957F09A2B5EDDF61733CA;1747.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 320.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 401.
  ) 
 Here is how much of TeX's memory you used:
- 15277 strings out of 493105
- 211384 string characters out of 6137073
- 352682 words of memory out of 5000000
- 18488 multiletter control sequences out of 15000+600000
+ 15301 strings out of 493105
+ 211640 string characters out of 6137073
+ 352686 words of memory out of 5000000
+ 18491 multiletter control sequences out of 15000+600000
  67806 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  46i,18n,45p,1101b,474s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1010,10 +1012,10 @@ exmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/l
 mssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texm
 f/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt1
 0.pfb>
-Output written on BachelorsThesis.pdf (35 pages, 360090 bytes).
+Output written on BachelorsThesis.pdf (39 pages, 368050 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 300 compressed objects within 3 object streams
- 88 named destinations out of 1000 (max. 500000)
- 130 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 416 PDF objects out of 1000 (max. 8388607)
+ 349 compressed objects within 4 object streams
+ 109 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 
