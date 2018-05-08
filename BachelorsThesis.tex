@@ -61,6 +61,8 @@ popisuje z{\' a}kladn{\' i} principy a slabiny RSA kryptosyst{\' e}mu.
 \website{https://github.com/vydrous/BP-code}
 
 \begin{document}
+by eliminating
+data dependency in decryption (resp. signing) algorithm.
 
 % \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
@@ -69,12 +71,9 @@ popisuje z{\' a}kladn{\' i} principy a slabiny RSA kryptosyst{\' e}mu.
 \chapter{Introduction}
 
 \paragraph*{}{
-In 1996 Paul Kocher presented timing attack on several cryptosystems including RSA. The cryptosystems have in common that all of them are using modular exponentiation and
-they are public key cryptosystems. Kochers 
-idea was to attack square and multiply algorithm which uses Montgomery multiplication. He intend to exploit execution time of decrypting and signing algorithms because there is 
-dependency on private exponent. After Kocher
-there have been more tries with better success, for example J.-F. Dhem, F. Koeune, P.-A. Leroux, P. Mestre,
-J.-J. Quisquater and J.-L. Willems who improved Kochers study.}
+Information security is nowadays very important thing. Through the network flows lot of information which is essential to keep in private. Due to this, many ciphers were invented and are used to encrypt communication over network. One of these ciphers is RSA. In past time there were several vulnerabilities on this cipher. I will focus on timing attack which exploit data dependency of decrypting algorithm. 
+}
+
 
 \paragraph*{}
 {This thesis will explain the main thoughts of RSA cryptosystem, its known vulnerabilities and how to defend against them. Thesis also introduce reader to timing attack problematic.
@@ -88,8 +87,9 @@ data dependency in decryption (resp. signing) algorithm.
 \pagestyle{ruled}
 \chapter{State-of-the-art}
 \paragraph*{}{
-By exploiting data dependency on secret exponent we should be able to recover key.
-}
+In 1996 Paul Kocher presented timing attack on several cryptosystems including RSA\cite{Kocher1996}. The cryptosystems have in common that all of them are using modular exponentiation or they are public key cryptosystems. Kochers idea was to attack square and multiply algorithm which uses Montgomery multiplication. He intend to exploit execution time of decrypting and signing algorithms because there is dependency on private exponent. After Kocher there have been more tries with better success, for example J.-F. Dhem, F. Koeune, P.-A. Leroux, P. Mestre, J.-J. Quisquater and J.-L. Willems who improved Kochers study.\cite{Dhem}}
+
+
 \paragraph*{}{
 We should decide what is the optimal amount of messages. It should not be too many so that we can guess the key in reasonable time but it have to be enough to guess the key.
 }
@@ -520,8 +520,7 @@ In my environment it was impossible to make any attack sufficient. Attack on mul
 10 000 samples there was no more than 50\% success on guessing first unknown bit.}
 
 \paragraph{}{
-Attacking square was far more interesting. On 50 000 samples algorithm occasionally fails up to guessing 3 bits, but there are more cases when algorithm correctly 
-guess more than 40 bits of key.		
+Attacking square was far more interesting. On 50 000 samples algorithm occasionally fails up to guessing 3 bits, but there are more cases when algorithm correctly guess more than 40 bits of key.		
 }
 
 \bibliographystyle{iso690}
