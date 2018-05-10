@@ -61,8 +61,7 @@ popisuje z{\' a}kladn{\' i} principy a slabiny RSA kryptosyst{\' e}mu.
 \website{https://github.com/vydrous/BP-code}
 
 \begin{document}
-by eliminating
-data dependency in decryption (resp. signing) algorithm.
+
 
 % \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
@@ -71,7 +70,7 @@ data dependency in decryption (resp. signing) algorithm.
 \chapter{Introduction}
 
 \paragraph*{}{
-Information security is nowadays very important thing. Through the network flows lot of information which is essential to keep in private. Due to this, many ciphers were invented and are used to encrypt communication over network. One of these ciphers is RSA. In past time there were several vulnerabilities on this cipher. I will focus on timing attack which exploit data dependency of decrypting algorithm. 
+Information security is nowadays very important. Through the network flows lot of information which is essential to keep in private. Due to this, many ciphers were invented and are used to encrypt communication over network. One of these ciphers is RSA. In past time there were several vulnerabilities on this cipher. I will focus on timing attack which exploit data dependency of decrypting algorithm. 
 }
 
 
@@ -80,6 +79,14 @@ Information security is nowadays very important thing. Through the network flows
 It will compare two targets of timing attack, Kochers original attack on multiplication versus Dhems attack on square. Although both attack can be easily defended just by eliminating
 data dependency in decryption (resp. signing) algorithm.
 
+\paragraph*{}
+{
+Purpose of this thesis is demonstrative. The final application should be used in cryptography courses on Faculty of Information chnologies on CTU, mainly in Advanced Cryptology course. It should demonstrate progress of guessing private key bit by bit. There will be two approaches of guessing key. First original introduced by Paul Kocher which focuses on extra modural reduction during multiply operation\cite{Kocher1996}. The second approach was introduced by J.-F. Dhem and collective where they focus on extra modular reduction during square phase\cite{Dhem}.
+}
+
+\paragraph*{}{
+Lastly, I will introduce several ways of defense against timing attacks which will avoid data dependency. So that execution of time will be either constant or not telling us any usable information.
+}
 
 
 
@@ -91,10 +98,10 @@ In 1996 Paul Kocher presented timing attack on several cryptosystems including R
 
 
 \paragraph*{}{
-We should decide what is the optimal amount of messages. It should not be too many so that we can guess the key in reasonable time but it have to be enough to guess the key.
+%We should decide what is the optimal amount of messages. It should not be too many so that we can guess the key in reasonable time but it have to be enough to guess the key.
 }
 \paragraph*{}{
-Next, we should create some defensive mechanism in cryptosystem in order to make attack fail.
+%Next, we should create some defensive mechanism in cryptosystem in order to make attack fail.
 }
 
 
