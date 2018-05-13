@@ -96,7 +96,7 @@ Lastly, I will introduce several ways of defense against timing attacks which wi
 \pagestyle{ruled}
 \chapter{State-of-the-art}
 \paragraph*{}{
-In 1996 Paul Kocher presented timing attack on several cryptosystems including RSA\cite{Kocher1996}. The cryptosystems have in common that all of them are using modular exponentiation or they are public key cryptosystems. Kochers idea was to attack square and multiply algorithm which uses Montgomery multiplication. He intend to exploit execution time of decrypting and signing algorithms because there is dependency on private exponent. After Kocher there have been more tries with better success, for example J.-F. Dhem, F. Koeune, P.-A. Leroux, P. Mestre, J.-J. Quisquater and J.-L. Willems who improved Kochers study.\cite{Dhem}}
+In 1996 Paul Kocher presented timing attack on several cryptosystems including RSA\cite{Kocher1996}. The cryptosystems have in common that all of them are using modular exponentiation or they are public key cryptosystems. Kochers idea was to attack square and multiply algorithm which uses Montgomery multiplication. He intend to exploit execution time of decrypting and signing algorithms because there is dependency on private exponent. After Kocher there have been more tries with better success, for example J.-F. Dhem, F. Koeune, P.-A. Leroux, P. Mestre, J.-J. Quisquater and J.-L. Willems who improved Kochers study\cite{Dhem}.}
 
 
 \paragraph*{}{
@@ -105,6 +105,16 @@ In 1996 Paul Kocher presented timing attack on several cryptosystems including R
 \paragraph*{}{
 %Next, we should create some defensive mechanism in cryptosystem in order to make attack fail.
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\chapter{Used mathematical principles}
+\paragraph*{}{
+In this chapter I will introduce mathematical theorems and principles which will be referenced through the thesis
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\section{Euler's theorem}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
@@ -132,7 +142,17 @@ Main thought of public-key cryptosystem is sharing encryption key to whoever ask
 \end{itemize}
 {Commonly used value of \(e\) is 65537.}
 \paragraph*{}
-{The cryprosystem consist of two keys, public and privat. Public key is used for encrypting messages and is composed of modulus \(n\) and public exponet \(e\). Private key is composed of modulus \(n\) and private exponent \(d\)}
+{The cryprosystem consist of two keys, public and privat. Public key is used for encrypting messages and is composed of modulus \(n\) and public exponet \(e\). Private key is composed of modulus \(n\) and private exponent \(d\)
+
+\begin{figure}
+\includegraphics[scale=0.3]{rsa-principle.jpg}
+\caption{RSA illustration\cite{img1}
+} 
+\end{figure}
+
+}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
@@ -157,8 +177,15 @@ Main thought of public-key cryptosystem is sharing encryption key to whoever ask
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Key distribution}
-\paragraph*{}
-{Alice would like to send Bob secret message. Bob generates public key \((e,n)\) and his private key \((d,n)\). Bob sends Alice public key using reliable route (it has not to be secret route). Due to high value of \(n\) possible attacker will not be able compute \(d\) from public keypair \((e,n)\) because factorization of \(n\) is not possible in polynomial time. Alice uses it to encrypt her message and sends it to Bob. Bob decrypts her message using his private key.}
+\begin{itemize}
+ \item Alice would like to send Bob secret message.
+ \item Bob generates public key \((e,n)\) and his private key \((d,n)\).
+ \item Bob sends Alice public key using reliable route (it has not to be secret route).
+ \item Due to high value of \(n\) possible attacker will not be able compute \(d\) from public keypair \((e,n)\) because factorization of \(n\) is not possible in polynomial time.
+ \item Alice uses it to encrypt her message and sends it to Bob. 
+ \item Bob decrypts her message using his private key.
+\end{itemize}
+ %would like to send Bob secret message. Bob generates public key \((e,n)\) and his private key \((d,n)\). Bob sends Alice public key using reliable route (it has not to be secret route). Due to high value of \(n\) possible attacker will not be able compute \(d\) from public keypair \((e,n)\) because factorization of \(n\) is not possible in polynomial time. Alice uses it to encrypt her message and sends it to Bob. Bob decrypts her message using his private key.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Encryption}
@@ -179,7 +206,10 @@ Now that we know, that \(ed \equiv 1 \pmod{\phi(n)}\) which can be overwriten to
 From Euler's theorem (\(a^{\phi(n)} \equiv 1 \pmod{n}\)) we can substitute \(m^{ k*\phi(n)}\) for 1.
 
 
-\[| m^1 * m^{ k*\phi(n)}|_n = | m^1 * 1|_n =  m\]}
+\[| m^1 * m^{ k*\phi(n)}|_n = | m^1 * 1|_n =  m\]
+
+We got desired message \(m\). 
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Signing}
@@ -191,8 +221,13 @@ RSA signing is used to verify wheter the message was not changed on the way from
 \section{Security}
 
 \paragraph*{}{
-TODO
+Security of RSA is relied on inability to do factorization of large integer in polynomial time. From paper ``Factoring estimates for a 1024-bit RSA modulus''\cite{} we can say that breaking 1024-bit RSA key would last about year long on device worth of 10 milions american dolars.
 }
+
+\paragraph*{}{
+There is a community challenge where people trying to factorize RSA keys of different length. The latest succces was on 768-bit length key which was factored in 2009. In that time the facotrization took 3 years of execution time. Nowadays standart key length is 1024 which have not been factored yet.
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \section{Optimization}
@@ -278,8 +313,8 @@ It is done by this algorithm: }
  \State \textit{Compute \(n^{-1}\) using the extended Euclidean algorithm}
  \State $\bar{a} \gets a *r \pmod{n}$
  \State $\bar{b} \gets b * r \pmod{n}$
- \State $\bar{u} \gets Mon_Red(\bar{a}, \bar{b})$
- \State $u \gets Mon_Red(\bar{u}, 1)$
+ \State $\bar{u} \gets Mon\_Red(\bar{a}, \bar{b})$
+ \State $u \gets Mon\_Red(\bar{u}, 1)$
  \State \textbf{return} $u$
 \EndFunction
 \end{algorithmic}
@@ -292,7 +327,7 @@ It is done by this algorithm: }
 {This optimization uses bitwise representation of the exponent. The algorithm picks all byte from left (MSB) to right and despite their value, 
 it determines which operation will be performed for each bit. For bits equal to 1 we perform squaring preset value \(c\) then we multiply it with the base of exponentiation \(m\). 
 For bits equal to 0 we just perform squaring part. Therefore we get data dependent operation, which will be used in our attack. For even faster implementation we use Montgomery
-multiplication instead of normal one. In some theses this Square and Multiply algorithm is called Montgomery exponentiation}
+multiplication instead of normal one. In some papers this Square and Multiply algorithm is called Montgomery exponentiation}
 
 
 
@@ -303,9 +338,9 @@ multiplication instead of normal one. In some theses this Square and Multiply al
  \State $c\gets 1$
  \State $k\gets BitLen(e)$
  \For {$i \gets k-1, \, 0$}
-  \State $c \gets Mon_Mult(c,c)$
+  \State $c \gets Mon\_Mult(c,c)$
   \If {$e[i] == 1$}\Comment{\(i\)th bit of exponent \(e\) }
-   \State $c \gets Mon_Mult(c,m)$
+   \State $c \gets Mon\_Mult(c,m)$
   \EndIf
  \EndFor
 \State \textbf{return} $c$
@@ -518,15 +553,32 @@ We also need precompute \(r\) and \(n^{-1}\).
 \subsection{Encryption and decryption}{
 Encryption and decryption are done just by loading keys from .pem file, then passing them to square\_and\_multiply function
 }
-
+\newpage
 \section{Attack implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Generating and sorting messages}
 \paragraph*{}{ 
-For both types of attack we are starting with set of randomly generated messages. We give them to oracle which tell us which subset message belongs to.
-
+For both types of attack we are starting with set of randomly generated messages. We give them to oracle which tell us which subset message belongs to. Python module \(timeit\) is used for time measurements. This chunk of code assign times to messages:
 }
+\paragraph*{}
+\begin{lstlisting}[language=Python]
+import timeit
+
+message_times = dict()
+message_range = 50000
+
+for i in range(0, message_range):
+    tmp = random.randint(0, n)
+
+    t = timeit.Timer('decrypt.decrypt(int(m1))', 
+	      setup='import decrypt; m1 = %i' % tmp)
+
+    r = t.timeit(1)
+
+    message_times[tmp] = r
+\end{lstlisting}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsubsection{Multiply}
@@ -558,7 +610,7 @@ belongs to one of \(M_1\) or \(M_2\) and to one of \(M_3\) or \(M_4\)
 
 \subsubsection{Multiply}
 \paragraph*{}{
-We will compare mean times of the subsets of messages. If \(M_1\) is significantly greater then we set guessed bit to 1 and if they differ slightly we set the bit to 0. 
+We will compare mean times of the subsets of messages. If \(M_1\) is significantly greater then we set guessed bit to 1 and if they differ slightly we set the bit to 0. There is problem with telling what is significant difference because there is lot of noise. The noise is caused by other reductions done by other bits of secret key.
 
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
@@ -567,20 +619,34 @@ We will compare mean times of the subsets of messages. If \(M_1\) is significant
 \paragraph*{}{
 We will compare differences between oracles. If oracle predicting multiply has greater difference between subsets we set 1, otherwise we set 0
 }
+
+\paragraph*{}
+{I tested two different implementation of square attack. The difference is between oracles. One implementation has naive oracle which simply do whole square and multiply algorithm 
+for each message. The second approach is to safe values of particular powers so the oracle does not need to compute whole square and multiply algorithm in each iteration. It just need
+one square and optional multiplication in each step.
+}
+
+\paragraph*{}{
+On the other hand, the naive implementation gives better results but is slightly slower.
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Assembling secret exponent}
-\paragraph{}{
+\paragraph*{}{
 After every guessed bit, it is added to variable d which is used by the oracles. After concatenation the new guessed exponent is tested if it is correct exponent.
 The the test is:}
 \begin{itemize}
  \item Pick some message from set
- \item encrypt that message
- \item power encrypted message to guessed private exponent \(d\)
+ \item Decrypt that message
+ \item Do exponentiation of encrypted message to guessed private exponent \(d\)
 \end{itemize}
 
 \paragraph*{}{
-During attack on square we are one cycle ahead so we have no option how to decide LSB so we just try concatenate both values of last  
+During attack on square we are one cycle ahead so we have no option how to decide LSB so we just try to test both values of last bit.
+}
+
+\paragraph*{}
+{For better fault toleration we could try guessing of last few bits by brute-force. When the whole attack is finished unsuccessfuly, we can go back few bits and try to all the possibilities of key suffix. It seems reasonable to do this with maximally last 10 bits. There will be extra 1024 encryption and decryption, but it is still more efficient then repeating whole attack.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
@@ -595,6 +661,12 @@ In my environment it was impossible to make any attack sufficient. Attack on mul
 Attacking square was far more interesting. On 50 000 samples algorithm occasionally fails up to guessing 3 bits, but there are more cases when algorithm correctly guess more than 40 bits of key.		
 }
 
+
+
+
+\paragraph*{}{
+Because attacks do not work entirely there was no need of implementing defenses in RSA implementation.
+}
 \bibliographystyle{iso690}
 \bibliography{mybibliographyfile,Kocher}
 
