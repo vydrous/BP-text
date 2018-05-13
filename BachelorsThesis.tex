@@ -22,6 +22,7 @@
 % \usepackage{amssymb} %additional math symbols
 
 \usepackage{dirtree} %directory tree visualisation
+\newtheorem{theorem}{Theorem}
 
 
 
@@ -111,9 +112,45 @@ In 1996 Paul Kocher presented timing attack on several cryptosystems including R
 \paragraph*{}{
 In this chapter I will introduce mathematical theorems and principles which will be referenced through the thesis
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\section{Fermat's little theorem}
+\theorem{(Fermat).}
+{
+For prime p and any \(a \in Z\) such that \(a \not\equiv 0 \pmod p,\)}
+
+\[a^{p-1} \equiv 1 \pmod p\]
+}
+\paragraph*{}
+{Fermat's little theorem is restricted only on prime numbers so that we will need to extende it to all integers. For that we will use Euler's theorem}
+% {
+% If we want to extend Fermat's little theorem to a composite modulus, a false generalization
+% would be: if \(a \not\equiv 0 \pmod m\) then \(a^{m-1} \equiv 1 \pmod m\). For a counterexample, take \(m = 15\) and
+% \(a = 2: 2^{14} \equiv 4 \not\equiv 1 \pmod {15}.\)}
+% \paragraph*{}{
+% A correct extension of Fermat's little theorem to non-prime moduli requires a new way
+% of thinking about the hypothesis in Fermat's little theorem. For prime p,}
+% 
+% \[a \not\equiv 0 \pmod p \Longleftrightarrow (a, p) = 1,\]
+% but these two conditions are not equivalent when p is replaced with a composite number.
+% It is the relative primality point of view on the right that lets Fermat's little theorem be
+% extended to a general modulus, as Euler discovered.
+% }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \section{Euler's theorem}
+
+\theorem{(Euler).}{
+For \(m \ge 2 \in Z^+\) and any \(a \in Z\) such that \(\gcd(a, m) = 1\)
+}
+\[  a^{\phi(n)} \equiv 1 \pmod n\]
+{
+where \(\phi(m)\) is the number of invertible integers modulo m.
+
+}
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
