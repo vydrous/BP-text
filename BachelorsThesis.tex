@@ -65,6 +65,7 @@ popisuje z{\' a}kladn{\' i} principy a slabiny RSA kryptosyst{\' e}mu.
 
 % \newacronym{CVUT}{{\v C}VUT}{{\v C}esk{\' e} vysok{\' e} u{\v c}en{\' i} technick{\' e} v Praze}
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \setsecnumdepth{part}
 \chapter{Introduction}
@@ -89,6 +90,7 @@ Lastly, I will introduce several ways of defense against timing attacks which wi
 }
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \setsecnumdepth{all}
 \pagestyle{ruled}
@@ -104,61 +106,105 @@ In 1996 Paul Kocher presented timing attack on several cryptosystems including R
 %Next, we should create some defensive mechanism in cryptosystem in order to make attack fail.
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \chapter{RSA}
 
 \paragraph*{}
-{RSA is public-key cryptosystem which was invented by Ron Rivest, Adi Shamir and Leonard Adleman. The cryptosystem was published in the 1977.}
+{RSA is public-key cryptosystem which was developed at MIT by Ron Rivest, Adi Shamir and Leonard Adleman. The cryptosystem was published in the 1977.
+}
 
+\paragraph*{}{
+%Public-key cryptosystem is ...
+Main thought of public-key cryptosystem is sharing encryption key to whoever asks for it. Beacause it is used just for encryption, we can be sure that attacker could not retrieve any information about secret decryption key. Each subject of the conversation keeps his decryption key in private.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \section{Principle}
 \paragraph*{}
-{The cipher is based on modular exponentiation. The whole process of crypting message is divided to four steps}
+{RSA is based on modular exponentiation. There is three important numbers which are used in computing modular exponation resp. crypting messages.}
+\begin{itemize}
+ \item \(n\) - Modulus which is used during whole cipher algorith.
+ \item \(e\) - Encryption exponent. Exponent \(e\) is used to modular exponation of message so that we get ciphertext. Exponent must meet the condition  \(\gcd(e,\phi(n)) = 1\) where \(\phi\) is Euler's totient function and \(gcd\) is the greatest common divider function. This condition will be explained later.
+ \item \(d\) - Decryption exponent. It is computed by finding modular inversion of public exponet \(e\) in modulus \(\phi(n)\).
+\end{itemize}
+{Commonly used value of \(e\) is 65537.}
+\paragraph*{}
+{The cryprosystem consist of two keys, public and privat. Public key is used for encrypting messages and is composed of modulus \(n\) and public exponet \(e\). Private key is composed of modulus \(n\) and private exponent \(d\)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
 
 \subsection{Key generation}
 \paragraph*{}
-{This is steps needed to generate public and private keypair}
+{This is steps needed to generate keypair including public and private key}
 \begin{itemize}
- \item Generate \(p\) and \(q\), which have to be distinct prime numbers.
+ \item Generate \(p\) and \(q\), which have to be distinct prime numbers large enough to make factorization of their product hard problem. If we choose too small \(p\) and \(q\), we are risking that attacker could do factorization of \(n\) so that he could easily compute our private exponent \(d\) using Euler's totient function \(\phi\).
  \item Compute \(n\), where \(n = p  q\)
- \item Compute Euler's totient function \(\phi(n)\). Because we know \(p\) and \(q\) it is simple to compute it. \[\phi(n) = (p - 1)(q - 1)\]
- \item Generate \(e\) such as \(\gcd(e,\phi(n)) = 1\) 
+ \item Compute Euler's totient function \(\phi(n)\). Because we know \(p\) and \(q\) it is simple to compute it. We know that  \(n\) is product of \(p\) and \(q\) which are prime numbers. Euler's totient function \(\phi\) for prime numers equals \(\phi(P) = P -1\) where \(P\) is prime number. Also we know that Euler's totient function \(\phi\) is multiplicative. So the problem is:
+ \[\phi(n) = \phi(p*q)\]
+ Now we use multiplicative rule:
+ \[\phi(p*q)\ = \phi(p)* \phi(q) = (p - 1)(q - 1)\]
+ Then we get simple formula for comupting \(\phi(n)\)
+ \[\phi(n) = (p - 1)(q - 1)\]
+ \item Generate \(e\) from 3 to  \(n - 1\) which meets condition \(\gcd(e,\phi(n)) = 1\). In most implementation of RSA is used \(e = 65537 = 2^{16} + 1\)
  \item Compute \(d = e^{-1}\bmod{\phi(n)} \)
  \item The pair \((e,n)\) is released as public key
- \item The pair \((d,n)\) is secret private key
+ \item The pair \((d,n)\) is kept secret as private key
 \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Key distribution}
 \paragraph*{}
-{Alice would like to send Bob secret message. Bob generates public key \((e,n)\) and his private key \((d,n)\). Bob sends Alice public key using reliable route (it has not to be secret route).
-Due to high value of \(n\) possible attacker will not be able compute \(d\) from public keypair \((e,n\) because factorization of \(n\) is not possible in polynomial time.
-Alice uses it to encrypt her message and sends it to Bob. Bob decrypts her message using his private key.}
+{Alice would like to send Bob secret message. Bob generates public key \((e,n)\) and his private key \((d,n)\). Bob sends Alice public key using reliable route (it has not to be secret route). Due to high value of \(n\) possible attacker will not be able compute \(d\) from public keypair \((e,n)\) because factorization of \(n\) is not possible in polynomial time. Alice uses it to encrypt her message and sends it to Bob. Bob decrypts her message using his private key.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Encryption}
 \paragraph*{}
 {Encryption is done by using public keypair \((e, n)\): \[c = | m^e | _n\]
 where \(m\) is plaintext message and \(c\) is encrypted message which will be sent to receiver.
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
 \subsection{Decryption}
 \paragraph*{}
 {Decryption is done similar thanks to relation \(ed \equiv 1 \pmod{\phi(n)}\). We can simply power ciphertext to our private exponent \(d\) to obtain original message.  
-\[ |c^d|_n = |(m^e)^d|_n = | m^{ed}|_n = |m^1|_n = m\]}
+\[ |c^d|_n = |(m^e)^d|_n = | m^{ed}|_n \]
+
+Now that we know, that \(ed \equiv 1 \pmod{\phi(n)}\) which can be overwriten to form \(ed = 1 + k*\phi(n)\). From that we get:
+\[| m^{ed}|_n = | m^{1+ k*\phi(n) }|_n = | m^1 * m^{ k*\phi(n)}|_n\]
+
+From Euler's theorem (\(a^{\phi(n)} \equiv 1 \pmod{n}\)) we can substitute \(m^{ k*\phi(n)}\) for 1.
+
+
+\[| m^1 * m^{ k*\phi(n)}|_n = | m^1 * 1|_n =  m\]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Signing}
 \paragraph*{}{
-RSA signing is used to verify identity of sender. The process is really similar to decryption but instead of message we are powering hash of the message.
-We are using our private exponent to sign hash so the receiver could easily decrypt hash using public exponent and compare it to actual hash of the received message.
+RSA signing is used to verify wheter the message was not changed on the way from sender to reciever. The process is really similar to decryption but we do not encrypt message itself. We first use some one way function on message, mostly there is used some hash function, then we encrypt the hash of the message but we use our private exponent for encryption. That would mean anyone could decrypt the signature by using our public key and compare it with actual has of the recieved message. If they equals we can be sure that it is original message and was not changed on the way to from sender. If someone tries to change the content of message, he has to have sender private key to generate valid signature, otherwise he will not be able to generate signature from different hash (which has to change, when he change the content of message).
+
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\section{Security}
+
+\paragraph*{}{
+TODO
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \section{Optimization}
 \paragraph*{}
-{Because we generally use high value of modulus \(n\) the exponentiation of such high numbers is very time consuming so there are some algorithms to increase speed of computation }
+{Because we generally use high value of modulus \(n\) the exponentiation of message of similar bit length is quite time consuming so several algorithms to increase speed of computation was developed.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Chinese remainder theorem}
 
 \paragraph*{}
-{By using CRT we can significantly speed up decryption of received messages. This method is not usable during encrypting phase because we need to know \(p\) and \(q\) factors of \(n\).
-Assuming that \(p>q\) we can precompute:}
+{By using CRT we can significantly speed up decryption of received messages or signing outcoming message. This method is not usable during encrypting phase because we need to know \(p\) and \(q\) factors of \(n\) which are parts of private key.
+Assuming that \(p>q\) we can divide :}
 
 \[dP = e^{-1} \pmod{p-1}\]
 \[dQ = e^{-1} \pmod{q-1}\]
@@ -176,16 +222,14 @@ Assuming that \(p>q\) we can precompute:}
 {Finding modular exponentiation cost grows with cube of number of the bits in \(n\), so it is still more efficient to do two exponentiation with half sized modulus}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Montgomery Multiplication}
 
 \paragraph*{}
-{Normal modular multiplication could be quite slow for large numbers, due to processor have to run several operations before it gets desired remainder. 
-On the other hand P. L. Montgomery developed algorithm which assumes that processor do division by power of 2 really fast.}
+{Normal modular multiplication could be quite slow for large numbers, due to processor have to run several operations before it gets desired remainder. On the other hand P. L. Montgomery developed algorithm which assumes that processor do division by power of 2 really fast.}
 \paragraph*{}{
-Montgomery presented algorithm, which transform numbers to Montgomery base and then compute modular multiplication efficiently.
-To transform number to Montgomery base we need to compute \(\bar{a} = ar \pmod{n}\) where \(r\) is the next greater power of 2 than \(n\). For example if \(2^{63} < n < 2^{64}\) 
-then desired \(r\) will be \(2^{64}\). The multiplication in Montgomery base is done by: \[\bar{u} = \bar{a}\bar{b}r^{-1} \pmod{n}\] where \(r{-1}\) is modular inversion of \(r\).
+Montgomery presented algorithm, which transform numbers to Montgomery base and then compute modular multiplication efficiently. To transform number to Montgomery base we need to compute \(\bar{a} = ar \pmod{n}\) where \(r\) is the next  power of 2 greater than \(n\). For example if \(2^{63} < n < 2^{64}\) then desired \(r\) will be \(2^{64}\). The multiplication in Montgomery base is done by: \[\bar{u} = \bar{a}\bar{b}r^{-1} \pmod{n}\] where \(r^{-1}\) is modular inversion of \(r\).
 }
 \paragraph*{}{
 As we can see \(\bar{u}\) is in Montgomery base of the corresponding 
@@ -241,6 +285,7 @@ It is done by this algorithm: }
 \end{algorithmic}
 \end{algorithm}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Square and Multiply}
 \paragraph*{}
@@ -269,6 +314,10 @@ multiplication instead of normal one. In some theses this Square and Multiply al
 \end{algorithmic}
 \end{algorithm}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\section{Vulnerabilities}
+\paragraph*{}
+{TODO}
 
 
 \chapter{Attacks}
@@ -280,6 +329,8 @@ The basic idea of timing attacks was presented by Kocher in 1996. He specified t
 Both variant of attack are based on similar principle. They divide messages from set \(M\) to several subsets \(M_i\) due to response of some Oracle \(O\). Then by measuring time of decrypting or signing and 
 guessing bits of secret exponent by comparing times of each set.
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
 \section{Attack on multiply}
 \paragraph*{}{
 First Kochers idea was to exploit multiply operation in Square and Multiply algorithm. Kocher mean to measure time of decryption (or signing) messages using the private key \(d\) 
@@ -312,6 +363,7 @@ is 1. If the times of \(M_1\) and \(M_2\) are equal then bit \(d_2\) is 0. . }
 
 \paragraph*{Problem:}{
 We cannot be sure what is significant difference between time means. So our guesses cannot be precise.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \section{Attack on square}
 \paragraph*{}{
@@ -363,6 +415,7 @@ Certainly, only one of oracles is giving us the right results. We can compare ti
 \(T_3 - T_4\) then we can be sure that bit \(d_i\) is 1, otherwise \(d-i\) is 0. The problem from multiply attack is no more actual because one of the differences have to be higher
 than other.
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 
 \chapter{Defense}
@@ -371,6 +424,7 @@ than other.
 The most obvious defense is to add dummy subtraction to Montgomery reduction algorithm which does not change any value but consume the same amount of time as if the real subtraction
 was performed. This should not significantly slow the computation but it totally eliminate this type of timing attack by making Montgomery reduction constant time function.
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \section{Masking}
 \paragraph*{}{
@@ -404,8 +458,10 @@ To avoid situation when even generating of mask could become target of timing at
 \[m' = m'^2 \pmod{n}\]
 
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \chapter{Realisation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \section{RSA implementation}
 
@@ -413,6 +469,7 @@ To avoid situation when even generating of mask could become target of timing at
 For our purposes we cannot use existing RSA implementation because they commonly have this vulnerability fixed. So it was needed to write own unsecure implementation of RSA cryptosystem.
 It is still possible use key generation algorithm from OpenSSL because it is not target of our attack. Python 3.6.1 was used and module Crypto for working with keys.
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \subsection{Montgomery}{
 The main part of RSA is mechanism for modular exponentiation. As was told before we are using Montgomery multiplication for speed up computation. It is based on pseudocode in section 2.2.2.
 }
@@ -431,6 +488,7 @@ def montgomery_product(a, b, n, r, n_inv):
 Some optimization was done to let reduction have greater time impact. Instead of modulo \(r\) is used bitwise AND with \(r-1\) and instead of division by \(r\) is used bitwise
 shift to right \(r.bit\_length() - 1\).
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Square and Multiply}{
 Due to computation in Montgomery base we also need to little edit the square and multiply algorithm to transform arguments to Montgomery base and at the end back to normal base.
@@ -455,18 +513,21 @@ We also need precompute \(r\) and \(n^{-1}\).
             st = montgomery_product(st, ot, n, r, n_inv)
     return montgomery_product(st, 1, n, r, n_inv)
 \end{lstlisting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Encryption and decryption}{
 Encryption and decryption are done just by loading keys from .pem file, then passing them to square\_and\_multiply function
 }
 
 \section{Attack implementation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Generating and sorting messages}
 \paragraph*{}{ 
 For both types of attack we are starting with set of randomly generated messages. We give them to oracle which tell us which subset message belongs to.
 
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsubsection{Multiply}
 \paragraph*{}{
@@ -491,6 +552,7 @@ Square attack is similar but we have two oracles which are telling us about redu
 multiplication phase will never be the last operation. Each of these oracles divide set of messages to two subsets which are distinct to each other. Each message 
 belongs to one of \(M_1\) or \(M_2\) and to one of \(M_3\) or \(M_4\)
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Deciding the bit}
 
@@ -499,11 +561,13 @@ belongs to one of \(M_1\) or \(M_2\) and to one of \(M_3\) or \(M_4\)
 We will compare mean times of the subsets of messages. If \(M_1\) is significantly greater then we set guessed bit to 1 and if they differ slightly we set the bit to 0. 
 
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsubsection{Square}
 \paragraph*{}{
 We will compare differences between oracles. If oracle predicting multiply has greater difference between subsets we set 1, otherwise we set 0
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Assembling secret exponent}
 \paragraph{}{
@@ -518,6 +582,7 @@ The the test is:}
 \paragraph*{}{
 During attack on square we are one cycle ahead so we have no option how to decide LSB so we just try concatenate both values of last  
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \setsecnumdepth{part}
 \chapter{Conclusion}
