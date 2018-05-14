@@ -7,6 +7,7 @@
 
 \documentclass[thesis=B,english]{FITthesis}[2012/10/20]
 
+
 % \usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
 % \usepackage[latin2]{inputenc} % LaTeX source encoded as ISO-8859-2
 % \usepackage[cp1250]{inputenc} % LaTeX source encoded as Windows-1250
@@ -22,9 +23,12 @@
 % \usepackage{amssymb} %additional math symbols
 
 \usepackage{dirtree} %directory tree visualisation
+
+\usepackage[utf8]{inputenc}
+
 \newtheorem{theorem}{Theorem}
 
-
+\newtheorem{definition}{Definition}
 
 % % list of acronyms
 % \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
@@ -115,14 +119,15 @@ In this chapter I will introduce mathematical theorems and principles which will
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \section{Fermat's little theorem}
-\theorem{(Fermat).}
+\begin{theorem}(Fermat)
 {
 For prime p and any \(a \in Z\) such that \(a \not\equiv 0 \pmod p,\)}
 
 \[a^{p-1} \equiv 1 \pmod p\]
-}
+\end{theorem}
+
 \paragraph*{}
-{Fermat's little theorem is restricted only on prime numbers so that we will need to extende it to all integers. For that we will use Euler's theorem}
+{Fermat's little theorem is restricted only on prime numbers so that we will need to extende it to all integers. For that we will use Euler's theorem.}
 % {
 % If we want to extend Fermat's little theorem to a composite modulus, a false generalization
 % would be: if \(a \not\equiv 0 \pmod m\) then \(a^{m-1} \equiv 1 \pmod m\). For a counterexample, take \(m = 15\) and
@@ -136,24 +141,43 @@ For prime p and any \(a \in Z\) such that \(a \not\equiv 0 \pmod p,\)}
 % It is the relative primality point of view on the right that lets Fermat's little theorem be
 % extended to a general modulus, as Euler discovered.
 % }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-\section{Euler's theorem}
+\section{Euler's totient function}
+\paragraph*{}{
+First we need to define Euler's totient function which is used in Euler's theorem.
+}
+\begin{definition}(totient)
+For \(n \ge 1, \phi(n)\) can be characterised as the number of postive integers less than n and relatively prime to it. The function \(\phi\) is usually called the Euler totient function after its originator , ( sometimes
+the phi-function ).
+\end{definition}
+\
 
-\theorem{(Euler).}{
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\section{Euler's theorem}{
+\begin{theorem}(Euler){
 For \(m \ge 2 \in Z^+\) and any \(a \in Z\) such that \(\gcd(a, m) = 1\)
-}
+
 \[  a^{\phi(n)} \equiv 1 \pmod n\]
-{
-where \(\phi(m)\) is the number of invertible integers modulo m.
 
+where \(\phi(m)\) is the number of invertible integers modulo m.
 }
 
 
-
+\end{theorem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\section{Chinese remainder theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
 
 \chapter{RSA}
 
@@ -275,7 +299,7 @@ There is a community challenge where people trying to factorize RSA keys of diff
 \subsection{Chinese remainder theorem}
 
 \paragraph*{}
-{By using CRT we can significantly speed up decryption of received messages or signing outcoming message. This method is not usable during encrypting phase because we need to know \(p\) and \(q\) factors of \(n\) which are parts of private key.
+{By using CRT we can significantly speed-up decryption of received messages or signing outcoming message. This method is not usable during encrypting phase because we need to know \(p\) and \(q\) factors of \(n\) which are parts of private key.
 Assuming that \(p>q\) we can divide :}
 
 \[dP = e^{-1} \pmod{p-1}\]
@@ -538,14 +562,16 @@ To avoid situation when even generating of mask could become target of timing at
 \section{RSA implementation}
 
 \paragraph*{}{
-For our purposes we cannot use existing RSA implementation because they commonly have this vulnerability fixed. So it was needed to write own unsecure implementation of RSA cryptosystem.
-It is still possible use key generation algorithm from OpenSSL because it is not target of our attack. Python 3.6.1 was used and module Crypto for working with keys.
+For our purposes we cannot use existing RSA implementation because they commonly have this vulnerability fixed. So it was needed to write own unsecure implementation of RSA cryptosystem. It is still possible use key generation algorithm from OpenSSL because it is not target of our attack. 128-bit key was used. Python 3.6.1 was used and module Crypto for working with keys. After some problem with time measurement I was forced to write core of the algorithm in C. For support big number which RSA operates with I used BIGNUM library from OpenSSL implementation of RSA. This transformation leads to significant speed-up of attack.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \subsection{Montgomery}{
-The main part of RSA is mechanism for modular exponentiation. As was told before we are using Montgomery multiplication for speed up computation. It is based on pseudocode in section 2.2.2.
+The main part of RSA is mechanism for modular exponentiation. As was told before we are using Montgomery multiplication for speed-up computation. It is based on pseudocode in section 2.2.2.
 }
 \paragraph*{}
+\begin{minipage}{\linewidth}
+
+
 \begin{lstlisting}[language=Python]
 def montgomery_product(a, b, n, r, n_inv):
     t = (a * b)
@@ -556,17 +582,58 @@ def montgomery_product(a, b, n, r, n_inv):
     return u
 \end{lstlisting}
 
+\end{minipage}
 \paragraph*{}{
 Some optimization was done to let reduction have greater time impact. Instead of modulo \(r\) is used bitwise AND with \(r-1\) and instead of division by \(r\) is used bitwise
 shift to right \(r.bit\_length() - 1\).
 }
+
+\paragraph*{}{
+Beacause operations in Python are not constant time so that attack have been failning. Decision was made to transform exponatiation of message to C with using BIGNUM library from OpenSSL which is used in OpenSSL RSA implementation to handle large integers.
+}
+
+\paragraph*{}
+\begin{minipage}{\linewidth}
+
+\begin{lstlisting}[language=C]
+BIGNUM * mon_prod(BIGNUM * a, BIGNUM * b, BIGNUM * N, 
+                    int R_length, BIGNUM * Ni, BIGNUM * R){
+                    
+    BIGNUM * t = BN_new();
+    BIGNUM * m = BN_new();
+    BIGNUM * u = BN_new();
+    BN_mul(t, a, b, ctx);
+
+    BN_mod_mul(m, t, Ni, R ,ctx);
+
+    BN_mul(u, m, N, ctx);
+
+    BN_add(m, u, t);
+    BN_rshift(u, m, R_length);
+
+    if (BN_cmp(u, N) >= 0 ){
+        BN_sub(m, u, N);
+        return m;
+    }
+    
+    return u;
+\end{lstlisting}
+\end{minipage}
+
+\paragraph*{}{
+I have ommited alocation and destruction local variables, to make code more readable.
+}
+\paragraph*{}{
+Altough this transformation brings significant speed-up of execution, the successfulness of attack was even worse. Even when I had added some dummy operations in reduction branch, the successfulness was not improved.
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Square and Multiply}{
 Due to computation in Montgomery base we also need to little edit the square and multiply algorithm to transform arguments to Montgomery base and at the end back to normal base.
 We also need precompute \(r\) and \(n^{-1}\).
 }
-
+\begin{minipage}{\linewidth}
 \begin{lstlisting}[language=Python]
  def square_and_multiply(ot, n, e):
     r = 2 ** (n.bit_length())
@@ -585,12 +652,69 @@ We also need precompute \(r\) and \(n^{-1}\).
             st = montgomery_product(st, ot, n, r, n_inv)
     return montgomery_product(st, 1, n, r, n_inv)
 \end{lstlisting}
+\end{minipage}
+
+\paragraph*{}{
+As I had tried to eliminate any unnecessary operations I have moved computation of \(\gcd\),  \(r^{-1}\) and \(n'\) outside of measured part of code. I would had liked to try if this ``cheating'' would help to improve successfulness of attack.
+}
+
+\paragraph*{}{
+After transforming this to C in this function remains only calling Python C-extension , where is whole computation of square and multiply algorith.
+}
+
+%\begin{minipage}{\linewidth}
+\begin{lstlisting}[language=C]
+static PyObject *
+montgomery_mult(PyObject *self, PyObject *args)
+{
+    BIGNUM * N = BN_new();
+    BIGNUM * Ni = BN_new();
+    BIGNUM * R = BN_new();
+
+    BIGNUM * ot = BN_new();
+    BIGNUM * st = BN_new();
+    BIGNUM * one = BN_new();
+    BN_CTX * ctx = BN_CTX_new();
+
+    char * a, *n, *bit_exp, *sts, *n_inv;
+    char *r;
+    int length;
+    unsigned int i;
+    if (!PyArg_ParseTuple(args, "ssssis", &a, &n,  &bit_exp, &r, &length, &n_inv))
+        return NULL;
+
+    BN_dec2bn(&one, "1");
+    BN_dec2bn(&N, (const char*) n);
+    BN_dec2bn(&Ni,(const char*) n_inv) ;
+    BN_dec2bn(&ot,(const char*) a);
+    BN_dec2bn(&R,(const char*) r);
+
+    BN_mod_mul(ot, ot, R, N, ctx);
+
+    BN_mod_mul(st, one, R, N, ctx);
+    
+    for( i = 0; i < strlen(bit_exp); i++){
+        st = mon_prod(st, st, N, length, Ni,R);
+        if( bit_exp[i] == '1' ){
+            st = mon_prod(st, ot, N, length, Ni, R);
+        }
+    }
+
+    st = mon_prod(st, one, N, length, Ni, R);
+
+    sts = BN_bn2dec(st);
+    return Py_BuildValue("s", sts);
+}
+\end{lstlisting}
+
+%\end{minipage}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Encryption and decryption}{
 Encryption and decryption are done just by loading keys from .pem file, then passing them to square\_and\_multiply function
 }
-\newpage
+
 \section{Attack implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
@@ -599,6 +723,9 @@ Encryption and decryption are done just by loading keys from .pem file, then pas
 For both types of attack we are starting with set of randomly generated messages. We give them to oracle which tell us which subset message belongs to. Python module \(timeit\) is used for time measurements. This chunk of code assign times to messages:
 }
 \paragraph*{}
+\begin{minipage}{\linewidth}
+
+
 \begin{lstlisting}[language=Python]
 import timeit
 
@@ -616,19 +743,21 @@ for i in range(0, message_range):
     message_times[tmp] = r
 \end{lstlisting}
 
+\end{minipage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsubsection{Multiply}
 \paragraph*{}{
 In this version we are attacking multiply operation. We use oracle which is very similar to RSA square\_and\_multiply function only with one difference.
 When the final reduction is processed, function return not only result of exponentiation but also bit which tell us that the reduction have been done.}
-
+\begin{minipage}{\linewidth}
 \begin{lstlisting}[language=Python]
   ...
   if u > n:
     return u - n, 1
   return u, 0
 \end{lstlisting}
+\end{minipage}
 
 \paragraph*{}
 {
@@ -686,20 +815,53 @@ During attack on square we are one cycle ahead so we have no option how to decid
 {For better fault toleration we could try guessing of last few bits by brute-force. When the whole attack is finished unsuccessfuly, we can go back few bits and try to all the possibilities of key suffix. It seems reasonable to do this with maximally last 10 bits. There will be extra 1024 encryption and decryption, but it is still more efficient then repeating whole attack.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\section{Problems and experiments}
+\paragraph*{}{
+After attack written in Python fails to guess private key, there were hopeful solution to rewrite the crucial part of RSA to C. I have written Python C-extension module which handle exponatiation of message. Module is compiled using python setup file:
+}
+\paragraph*{}
+\begin{lstlisting}[language=Python]
+from distutils.core import setup, Extension
+setup(name='montgomery', version='1.0',
+      ext_modules=[Extension('montgomery',
+                             sources=['../montgomery.c'],
+                             libraries=['crypto', 'ssl'],
+                             )])
+\end{lstlisting}
+
+\paragraph*{}
+{
+After builded it is imported like any other Python modul. With this approach I get singificant speed-up. On the other hand, guessing of key got much worse, it can guess maximally 10 bits of key. I was thinking, that it is because the execution time of square and multiply in C is significaly lesser then in Python so that any other operation in Python will have greater impact on final time than single iteration of square and multiply. I have moved precomputation of \(r^{-1}\) and \(n'\) outside of measured part of code. Unfortunately, it has almost no effect.
+}
+
+\paragraph*{}{
+Second thought was that reading key from disk is also taking too much time. It could distort measured times by a big amount. But if this will be removed from measured part, the attack will no longer be valid, beacause we use private key which we are guessing as a parameter to time meassuring function. Even thought that change does not help to solve the problem and attack is still failling.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \setsecnumdepth{part}
 \chapter{Conclusion}
 
 \paragraph*{}{
-In my environment it was impossible to make any attack sufficient. Attack on multiply takes time to set the limit when the times differs. Even with sufficient coefficient and 
-10 000 samples there was no more than 50\% success on guessing first unknown bit.}
+In my environment it was impossible to make any attack sufficient. Attack on multiply have a great problem setting coefficient when the average times of two message groups differs. Which was expectable by nature of this form of attack. Even with sufficient coefficient and 10 000 samples there was no more than 50\% success on guessing first unknown bit so it looks completly random}
 
 \paragraph{}{
 Attacking square was far more interesting. On 50 000 samples algorithm occasionally fails up to guessing 3 bits, but there are more cases when algorithm correctly guess more than 40 bits of key.		
 }
 
+\paragraph*{}{
+To improve performance I have rewriten core of the decrypting algorithm from Python to C language. It did have better performance, but from lesser execution time there are more space for noises to distort measurements.
+}
 
 
+\paragraph*{}{
+I have probably identified two biggest noise generators which are precomputation of \(r^{-1}\) and \(n'\) and reading private key from disk. But when I try to meassure time without these operations it had almost no effect on successfulness of attack.
+}
+
+\paragraph*{}
+{I am asking question, if it is even possible to make this attack work on my home workstation. Because there is lot of noise, iteruption from system and other events which can distort my measurements.
+}
 
 \paragraph*{}{
 Because attacks do not work entirely there was no need of implementing defenses in RSA implementation.
