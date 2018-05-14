@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \providecommand{\biburl}[1]{\url{#1}}
 \providecommand{\urlprefix}{Available from: }
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -7,6 +7,11 @@
   \urlstyle{rm}\Url}\fi
 \providecommand{\eprint}[2][]{\biburl{#2}}
 
+\bibitem{img1}
+http://www.networkworld.com/. Encryption. 2008, [Online; accessed May 14,
+  2017].
+\urlprefix\biburl{http://www.networkworld.com/article/2268575/lan-wan/chapter-2--ssl-vpn-technology.html}
+
 \bibitem{Kocher1996}
 Kocher, P.~C. \emph{Timing Attacks on Implementations of Diffie-Hellman, RSA,
   DSS, and Other Systems}. Berlin, Heidelberg: Springer Berlin Heidelberg,
@@ -14,13 +19,45 @@ Kocher, P.~C. \emph{Timing Attacks on Implementations of Diffie-Hellman, RSA,
 \urlprefix\biburl{http://dx.doi.org/10.1007/3-540-68697-5_9}
 
 \bibitem{Dhem}
-Dhem, J.-F. Guide to Practical Implementation of the Timing Attack. June 1998,
-  [online], [cit. 2017-05-15].
+Dhem, J.-F.; F.Koeune; et al. Guide to Practical Implementation of the Timing
+  Attack. June 1998, [online], [cit. 2017-05-15].
 \urlprefix\biburl{http://www.cs.jhu.edu/~fabian/courses/CS600.624/Timing-full.pdf}
 
-\bibitem{img1}
-http://www.networkworld.com/. Encryption. 2008, [Online; accessed May 14,
-  2017].
-\urlprefix\biburl{http://www.networkworld.com/article/2268575/lan-wan/chapter-2--ssl-vpn-technology.html}
+\bibitem{euler}
+CONRAD, K. EULER’S THEOREM. 2018, [online], [cit. 2018-05-14].
+\urlprefix\biburl{http://www.math.uconn.edu/~kconrad/blurbs/ugradnumthy/eulerthm.pdf}
+
+\bibitem{totient}
+Arun-Kumar, S. Algorithmic Number Theory. 2018, [online], [cit. 2018-05-14].
+\urlprefix\biburl{http://www.cse.iitd.ernet.in/~sak/courses/ant/notes/ant.pdf}
+
+\bibitem{RSA-math}
+Kaliski, B. The Mathematics of the RSA Public-Key Cryptosystem. \emph{RSA
+  Laboratories}, 2018, [online], [cit. 2018-05-14].
+\urlprefix\biburl{http://www.mathaware.org/mam/06/Kaliski.pdf}
+
+\bibitem{factor}
+Lenstra1, A.; Tromer, E.; et al. Factoring estimates for a 1024-bit RSA
+  modulus. 2018, [online], [cit. 2018-05-14].
+\urlprefix\biburl{https://www.cs.tau.ac.il/~tromer/papers/factorest.pdf}
+
+\bibitem{challenge}
+2018, [online], [cit. 2018-05-14].
+\urlprefix\biburl{https://web.archive.org/web/20130507091636/http://www.rsa.com/rsalabs/node.asp?id=2092}
+
+\bibitem{di-mgt}
+{DI Management:}. Using the CRT with RSA. December 2013, [online], [cit.
+  2017-05-15].
+\urlprefix\biburl{http://www.di-mgt.com.au/crt_rsa.html}
+
+\bibitem{koc2}
+Koç, �.~K. Montgomery Multiplication. \emph{Istanbul Sehir University and
+  University of California Santa Barbara}, 2017, [online], [cit. 2017-05-15].
+\urlprefix\biburl{http://colinandmargaret.co.uk/Research/Mont_Mult_2ndEd_v4.pdf}
+
+\bibitem{mi-kry}
+BUCEK, J. Utoky postrannimi kanaly. 2013, {(lecture)}, [cit. 2017-03-27],
+  [online].
+\urlprefix\biburl{https://edux.fit.cvut.cz/courses/MI-KRY/_media/lectures/07/side1.pdf}
 
 \end{thebibliography}

@@ -121,9 +121,9 @@ In this chapter I will introduce mathematical theorems and principles which will
 \section{Fermat's little theorem}
 \begin{theorem}(Fermat)
 {
-For prime p and any \(a \in Z\) such that \(a \not\equiv 0 \pmod p,\)}
+``For prime p and any \(a \in Z\) such that \(a \not\equiv 0 \pmod p,\)}
 
-\[a^{p-1} \equiv 1 \pmod p\]
+\[a^{p-1} \equiv 1 \pmod p\]''\cite{euler}
 \end{theorem}
 
 \paragraph*{}
@@ -149,10 +149,10 @@ For prime p and any \(a \in Z\) such that \(a \not\equiv 0 \pmod p,\)}
 First we need to define Euler's totient function which is used in Euler's theorem.
 }
 \begin{definition}(totient)
-For \(n \ge 1, \phi(n)\) can be characterised as the number of postive integers less than n and relatively prime to it. The function \(\phi\) is usually called the Euler totient function after its originator , ( sometimes
-the phi-function ).
+``For \(n \ge 1, \phi(n)\) can be characterised as the number of postive integers less than n and relatively prime to it. The function \(\phi\) is usually called the Euler totient function after its originator , ( sometimes
+the phi-function ).''\cite{totient}
 \end{definition}
-\
+
 
 
 
@@ -162,11 +162,11 @@ the phi-function ).
 
 \section{Euler's theorem}{
 \begin{theorem}(Euler){
-For \(m \ge 2 \in Z^+\) and any \(a \in Z\) such that \(\gcd(a, m) = 1\)
+``For \(m \ge 2 \in Z^+\) and any \(a \in Z\) such that \(\gcd(a, m) = 1\)
 
 \[  a^{\phi(n)} \equiv 1 \pmod n\]
 
-where \(\phi(m)\) is the number of invertible integers modulo m.
+where \(\phi(m)\) is the number of invertible integers modulo m.''\cite{euler}
 }
 
 
@@ -174,7 +174,7 @@ where \(\phi(m)\) is the number of invertible integers modulo m.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-\section{Chinese remainder theorem}
+%\section{Chinese remainder theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
@@ -183,7 +183,7 @@ where \(\phi(m)\) is the number of invertible integers modulo m.
 
 \paragraph*{}
 {RSA is public-key cryptosystem which was developed at MIT by Ron Rivest, Adi Shamir and Leonard Adleman. The cryptosystem was published in the 1977.
-}
+}\cite{RSA-math}
 
 \paragraph*{}{
 %Public-key cryptosystem is ...
@@ -203,7 +203,7 @@ Main thought of public-key cryptosystem is sharing encryption key to whoever ask
 \end{itemize}
 {Commonly used value of \(e\) is 65537.}
 \paragraph*{}
-{The cryprosystem consist of two keys, public and privat. Public key is used for encrypting messages and is composed of modulus \(n\) and public exponet \(e\). Private key is composed of modulus \(n\) and private exponent \(d\)
+{The cryprosystem consist of two keys, public and privat. Public key is used for encrypting messages and is composed of modulus \(n\) and public exponet \(e\). Private key is composed of modulus \(n\) and private exponent \(d\).
 
 \begin{figure}
 \includegraphics[scale=0.3]{rsa-principle.jpg}
@@ -278,15 +278,16 @@ We got desired message \(m\).
 RSA signing is used to verify wheter the message was not changed on the way from sender to reciever. The process is really similar to decryption but we do not encrypt message itself. We first use some one way function on message, mostly there is used some hash function, then we encrypt the hash of the message but we use our private exponent for encryption. That would mean anyone could decrypt the signature by using our public key and compare it with actual has of the recieved message. If they equals we can be sure that it is original message and was not changed on the way to from sender. If someone tries to change the content of message, he has to have sender private key to generate valid signature, otherwise he will not be able to generate signature from different hash (which has to change, when he change the content of message).
 
 }
+\paragraph*{}{All content in this chapter to this point is based on \cite{RSA-math}.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \section{Security}
 
 \paragraph*{}{
-Security of RSA is relied on inability to do factorization of large integer in polynomial time. From paper ``Factoring estimates for a 1024-bit RSA modulus''\cite{} we can say that breaking 1024-bit RSA key would last about year long on device worth of 10 milions american dolars.
+Security of RSA is relied on inability to do factorization of large integer in polynomial time. From paper ``Factoring estimates for a 1024-bit RSA modulus''\cite{factor} we can say that breaking 1024-bit RSA key would last about year long on device worth of 10 milions american dolars.
 }
 
 \paragraph*{}{
-There is a community challenge where people trying to factorize RSA keys of different length. The latest succces was on 768-bit length key which was factored in 2009. In that time the facotrization took 3 years of execution time. Nowadays standart key length is 1024 which have not been factored yet.
+There is a community challenge where people trying to factorize RSA keys of different length. The latest succces was on 768-bit length key which was factored in 2009. In that time the facotrization took 3 years of execution time. Nowadays standart key length is 1024 which have not been factored yet.\cite{challenge}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
@@ -317,7 +318,7 @@ Assuming that \(p>q\) we can divide :}
 \paragraph*{}
 {Finding modular exponentiation cost grows with cube of number of the bits in \(n\), so it is still more efficient to do two exponentiation with half sized modulus}
 
-
+\paragraph*{}{This whole section is based on \cite{di-mgt}.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Montgomery Multiplication}
@@ -381,6 +382,8 @@ It is done by this algorithm: }
 \end{algorithmic}
 \end{algorithm}
 
+\paragraph*{}{This section derives from \cite{koc2}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \subsection{Square and Multiply}
@@ -410,20 +413,19 @@ multiplication instead of normal one. In some papers this Square and Multiply al
 \end{algorithmic}
 \end{algorithm}
 
+\paragraph*{}{This section derives from \cite{koc2}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-\section{Vulnerabilities}
-\paragraph*{}
-{TODO}
+
 
 
 \chapter{Attacks}
 \paragraph*{}{
 The basic idea of timing attacks was presented by Kocher in 1996. He specified theoretical attacks not only on RSA.
-}
+}\cite{Kocher1996}
 
 \paragraph*{}{
 Both variant of attack are based on similar principle. They divide messages from set \(M\) to several subsets \(M_i\) due to response of some Oracle \(O\). Then by measuring time of decrypting or signing and 
-guessing bits of secret exponent by comparing times of each set.
+guessing bits of secret exponent by comparing times of each set.\cite{Kocher1996}\cite{mi-kry}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
@@ -431,11 +433,11 @@ guessing bits of secret exponent by comparing times of each set.
 \paragraph*{}{
 First Kochers idea was to exploit multiply operation in Square and Multiply algorithm. Kocher mean to measure time of decryption (or signing) messages using the private key \(d\) 
 and focus on conditional multiply step. We are attacking each bit of \(d\) with knowledge of \( i-1\) bits we can guess the \(i\)th bit. Let \(d = d_1,d_2, \ldots ,d_k \) where \(k\) is bit length of \(d\) and \(d_1\) is MSB. 
-We can assume that \( d_1 = 1\) so we can attack bit \(d_2\).
+We can assume that \( d_1 = 1\) so we can attack bit \(d_2\).\cite{Kocher1996}
 }
 \paragraph*{}{
 We need oracle \(O\) which predict whether final Montgomery reduction happened during multiply step:
-}
+}\cite{mi-kry}
 \paragraph*{}
 
 \( O(m) =\) $\left\{
@@ -458,7 +460,7 @@ final Montgomery Reduction. We compare means of sets \(M_1\) and \(M_2\). If tim
 is 1. If the times of \(M_1\) and \(M_2\) are equal then bit \(d_2\) is 0. . }
 
 \paragraph*{Problem:}{
-We cannot be sure what is significant difference between time means. So our guesses cannot be precise.}
+We cannot be sure what is significant difference between time means. So our guesses cannot be precise.}\cite{mi-kry}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \section{Attack on square}
@@ -471,7 +473,7 @@ which has value before unknown possible multiplication step.\cite{Dhem}
 We first presume that bit \(d_i\) is 1. If the presumption is right then the following steps will be executed. \(m_{temp}\) will be multiplied by \(m\), 
 then the result of multiplication will be squared. We will execute the multiplication step and then we will check if in the square step is done with or without reduction.
 By this criterion we divide messages to subsets \(M_1\) if the reduction was computed or \(M_2\) if not. The oracle will be:
-}
+}\cite{Dhem}\cite{mi-kry}
 \paragraph*{}
 \( O_1(m) =\) $\left\{
   \begin{array}{cl}
@@ -482,7 +484,7 @@ By this criterion we divide messages to subsets \(M_1\) if the reduction was com
 \paragraph*{}{
 Secondly, we presume that bit \(d_i\) is 0. In that case only the square phase \(m_{temp}^2\) will be executed so we similarly divide messages to subsets \(M_3\) with reduction and 
 \(M_4\) without reduction. Oracle \(O_2\):
-}
+}\cite{Dhem}\cite{mi-kry}
 
 
 \paragraph*{}
@@ -510,7 +512,7 @@ We now get 4 subsets of \(M\):
 Certainly, only one of oracles is giving us the right results. We can compare time difference between \( O_1 \) and \(O_2\). That means if \(T_1 - T_2 \) is greater than 
 \(T_3 - T_4\) then we can be sure that bit \(d_i\) is 1, otherwise \(d-i\) is 0. The problem from multiply attack is no more actual because one of the differences have to be higher
 than other.
-}
+}\cite{Dhem}\cite{mi-kry}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 
@@ -538,7 +540,7 @@ where \(e\) is public exponent.
  & = c^d * m^{-1} \pmod{n}
 \end{split}
 \end{equation}
-from where we can see that \(c^d\) is our desired message masked by \(m^{-1}\). Then we simply recover \(x\) by multiplying by \(m\)\cite{Kocher1996}:
+from where we can see that \(c^d\) is our desired message masked by \(m^{-1}\). Then we simply recover \(x\) by multiplying by \(m\):\cite{Kocher1996}
 \begin{equation}
 \begin{split}
  x & = x_m * m \pmod{n} \\
@@ -846,7 +848,7 @@ Second thought was that reading key from disk is also taking too much time. It c
 \paragraph*{}{
 In my environment it was impossible to make any attack sufficient. Attack on multiply have a great problem setting coefficient when the average times of two message groups differs. Which was expectable by nature of this form of attack. Even with sufficient coefficient and 10 000 samples there was no more than 50\% success on guessing first unknown bit so it looks completly random}
 
-\paragraph{}{
+\paragraph*{}{
 Attacking square was far more interesting. On 50 000 samples algorithm occasionally fails up to guessing 3 bits, but there are more cases when algorithm correctly guess more than 40 bits of key.		
 }
 
@@ -855,8 +857,13 @@ To improve performance I have rewriten core of the decrypting algorithm from Pyt
 }
 
 
+
 \paragraph*{}{
 I have probably identified two biggest noise generators which are precomputation of \(r^{-1}\) and \(n'\) and reading private key from disk. But when I try to meassure time without these operations it had almost no effect on successfulness of attack.
+}
+
+\paragraph*{}{
+I have tried lot of minor changes in code, trying to isolate program in docker, running extended Euclidean algorihm in C and lot of another changes but nothing have made any mentionable result.
 }
 
 \paragraph*{}

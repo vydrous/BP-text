@@ -8,7 +8,6 @@
 \contentsline {section}{\numberline {2.1}Fermat's little theorem}{5}{section.2.1}
 \contentsline {section}{\numberline {2.2}Euler's totient function}{5}{section.2.2}
 \contentsline {section}{\numberline {2.3}Euler's theorem}{5}{section.2.3}
-\contentsline {section}{\numberline {2.4}Chinese remainder theorem}{6}{section.2.4}
 \contentsline {chapter}{\chapternumberline {3}RSA}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Principle}{7}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Key generation}{8}{subsection.3.1.1}
@@ -21,7 +20,6 @@
 \contentsline {subsection}{\numberline {3.3.1}Chinese remainder theorem}{10}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}Montgomery Multiplication}{11}{subsection.3.3.2}
 \contentsline {subsection}{\numberline {3.3.3}Square and Multiply}{12}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}Vulnerabilities}{13}{section.3.4}
 \contentsline {chapter}{\chapternumberline {4}Attacks}{15}{chapter.4}
 \contentsline {section}{\numberline {4.1}Attack on multiply}{15}{section.4.1}
 \contentsline {section}{\numberline {4.2}Attack on square}{16}{section.4.2}
@@ -42,8 +40,7 @@
 \contentsline {subsubsection}{\numberline {6.2.2.2}Square}{26}{subsubsection.6.2.2.2}
 \contentsline {subsection}{\numberline {6.2.3}Assembling secret exponent}{26}{subsection.6.2.3}
 \contentsline {section}{\numberline {6.3}Problems and experiments}{26}{section.6.3}
-\contentsline {chapter}{Conclusion}{29}{chapter*.83}
-\contentsline {paragraph}{}{29}{section*.85}
-\contentsline {chapter}{Bibliography}{31}{section*.91}
+\contentsline {chapter}{Conclusion}{29}{chapter*.86}
+\contentsline {chapter}{Bibliography}{31}{section*.95}
 \contentsline {appendix}{\chapternumberline {A}Acronyms}{33}{appendix.A}
 \contentsline {appendix}{\chapternumberline {B}Contents of enclosed CD}{35}{appendix.B}
