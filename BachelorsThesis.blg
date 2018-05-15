@@ -1,12 +1,12 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Arch Linux)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2015/dev/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: BachelorsThesis.aux
 The style file: iso690.bst
 Database file #1: mybibliographyfile.bib
 Warning--entry type for "mi-kry" isn't style-file defined
 --line 64 of file mybibliographyfile.bib
 Database file #2: Kocher.bib
-Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--to sort, need author or key in challenge
 Warning--can't use both author and editor fields in Kocher1996
 Warning--empty chapter and pages in Kocher1996
@@ -21,7 +21,7 @@ Warning--empty journal in challenge
 Warning--empty journal in di-mgt
 You've used 12 entries,
             3146 wiz_defined-function locations,
-            720 strings with 7328 characters,
+            720 strings with 7326 characters,
 and the built_in function-call counts, 4378 in all, are:
 = -- 319
 > -- 112
