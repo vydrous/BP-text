@@ -13,50 +13,51 @@ Warning--empty chapter and pages in Kocher1996
 Warning--empty journal in Dhem
 Warning--empty journal in euler
 Warning--empty journal in totient
+Warning--empty journal in crt
 Warning--empty journal in factor
 Warning--empty author in challenge
 Warning--empty title in challenge
 Warning--empty journal in challenge
 Warning--empty journal in di-mgt
-You've used 11 entries,
+You've used 12 entries,
             3146 wiz_defined-function locations,
-            716 strings with 7218 characters,
-and the built_in function-call counts, 4050 in all, are:
-= -- 296
-> -- 105
+            720 strings with 7328 characters,
+and the built_in function-call counts, 4378 in all, are:
+= -- 319
+> -- 112
 < -- 1
-+ -- 52
-- -- 30
-* -- 220
-:= -- 481
-add.period$ -- 31
-call.type$ -- 11
-change.case$ -- 45
++ -- 55
+- -- 32
+* -- 236
+:= -- 521
+add.period$ -- 34
+call.type$ -- 12
+change.case$ -- 49
 chr.to.int$ -- 0
-cite$ -- 22
-duplicate$ -- 413
-empty$ -- 373
-format.name$ -- 32
-if$ -- 845
+cite$ -- 24
+duplicate$ -- 450
+empty$ -- 404
+format.name$ -- 34
+if$ -- 912
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 109
-newline$ -- 53
-num.names$ -- 20
-pop$ -- 238
+int.to.str$ -- 12
+missing$ -- 119
+newline$ -- 57
+num.names$ -- 22
+pop$ -- 260
 preamble$ -- 1
-purify$ -- 36
+purify$ -- 39
 quote$ -- 0
-skip$ -- 134
+skip$ -- 144
 stack$ -- 0
-substring$ -- 108
-swap$ -- 183
+substring$ -- 115
+swap$ -- 197
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 42
-warning$ -- 11
-while$ -- 23
-width$ -- 13
-write$ -- 110
-(There were 12 warnings)
+type$ -- 46
+warning$ -- 12
+while$ -- 25
+width$ -- 14
+write$ -- 119
+(There were 13 warnings)

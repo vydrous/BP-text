@@ -123,11 +123,11 @@ In this chapter I will introduce mathematical theorems and principles which will
 {
 ``For prime p and any \(a \in Z\) such that \(a \not\equiv 0 \pmod p,\)}
 
-\[a^{p-1} \equiv 1 \pmod p\]''\cite{euler}
+\[a^{p-1} \equiv 1 \pmod p ''\cite{euler}\]
 \end{theorem}
 
 \paragraph*{}
-{Fermat's little theorem is restricted only on prime numbers so that we will need to extende it to all integers. For that we will use Euler's theorem.}
+{Fermat's little theorem is restricted only on prime numbers so that we will need to extend it to all integers. For that we will use Euler's theorem.}
 % {
 % If we want to extend Fermat's little theorem to a composite modulus, a false generalization
 % would be: if \(a \not\equiv 0 \pmod m\) then \(a^{m-1} \equiv 1 \pmod m\). For a counterexample, take \(m = 15\) and
@@ -174,7 +174,17 @@ where \(\phi(m)\) is the number of invertible integers modulo m.''\cite{euler}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%\section{Chinese remainder theorem}
+\section{Chinese remainder theorem}
+
+\begin{theorem}(CRT)
+``Let \(m_1,... , m_r\) be pairwise coprime natural numbers, and \(a_i, (1 \le i \le r)\) be arbitrary integers. Write \(M_i = \Pi_{j \not= i} m_j \).Let \(n_i\) be the multiplicative inverse of \(M_i\) modulo \(m_i\).
+Then, the unique solution \(N \bmod m_1m_2 ... m_r\) to the
+system of congruences \(N \equiv a_i \bmod m_i\) for all \(i \le r\) is
+given by
+\[N = a_1n_1M_1 + a_2n_2M_2 + ... + a_rn_rM_r. ''\cite{crt}\]
+
+\end{theorem}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
